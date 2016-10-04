@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "MyDocuments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyDocuments</h2>
+
+screen to display all the user documents 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well-sm">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
+                    <li><a href="@Url.Action("Index","Personal")">Personal</a></li>
+                    <li class="active">My Documents</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

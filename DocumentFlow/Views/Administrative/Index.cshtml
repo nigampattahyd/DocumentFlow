@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+from administrative controller index view
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well-sm">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
+                    <li class="active">Administrative</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li><a href="@Url.Action("Users","Administrative")">Users</a></li>
+        <li><a href="@Url.Action("Roles","Administrative")">Roles</a></li>
+        <li><a href="@Url.Action("DashBoardSetUp","Administrative")">Dashboard Set Up Flow</a></li>
+        <li><a href="@Url.Action("Reports","Administrative")">Reports</a></li>
+        <li><a href="@Url.Action("Tools","Administrative")">Tools</a></li>
+    </ul>
+</div>

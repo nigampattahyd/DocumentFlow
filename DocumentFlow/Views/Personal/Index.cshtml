@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+from index view of personal controller 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well-sm">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
+                    <li class="active">Personal</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li><a href="@Url.Action("Mails","Personal")">Mails</a></li>
+        <li><a href="@Url.Action("MyDocuments","Personal")">My Documents</a></li>
+        <li><a href="@Url.Action("AllDocuments","Personal")">All Documents</a></li>
+        <li><a href="@Url.Action("SharedDocuments","Personal")">Shared Documents</a></li>
+        <li><a href="@Url.Action("SharedToMe","Personal")">Shared To Documents</a></li>
+        <li><a href="@Url.Action("RecentDocuments","Personal")">Recent Documents</a></li>
+        <li><a href="@Url.Action("DeletedDocuments","Personal")">Deleted Documents</a></li>
+
+
+    </ul>
+</div>

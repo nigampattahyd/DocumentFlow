@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Roles</h2>
+screen to display all the roles and to create roles 
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well-sm">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
+                    <li><a href="@Url.Action("Index","Administrative")">Administrative</a></li>
+                    <li class="active">Roles</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="box-primary">
+            <div class="table table-bordered">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="label pull-right">
+                            <h5><a href="@Url.Action("CreateRole","Administrative")">Create Role</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+</div>
