@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,14 +51,142 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IErrologs.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Model\EntityFramework\CompanyType.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Custom_Manage_Master.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Custom_Value_Master.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_Default.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DF_Default.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_Default.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_Default.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DF_Default.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllCompanyTypeById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllCompanyType_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllDocument_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllErrorLogs_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllFolder_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllPublicDocumetsById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllPublicDocumets_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllSharedDocuments_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllStatus_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllUsers_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllUserTypeById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetAllUserType_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetDocumentById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetFolderById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetStatusById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\DF_GetUsersDetailsById_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Document.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\ErrorLog.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Folder.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\PublicDocument.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\SharedDocumnet.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Status.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\User.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\UserType.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityFramework\Usp_Custom_Manage_Value_Master_Result.cs">
+      <DependentUpon>DF_Default.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExtendedModels\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ErroLogsRepo.cs" />
+    <Compile Include="Repository\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Model\EntityFramework\" />
-    <Folder Include="Model\ExtendedModels\" />
     <Folder Include="Model\ViewModels\" />
-    <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model\EntityFramework\DF_Default.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DF_Default.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\EntityFramework\DF_Default.edmx.diagram">
+      <DependentUpon>DF_Default.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\EntityFramework\DF_Default.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DF_Default.edmx</DependentUpon>
+      <LastGenOutput>DF_Default.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\EntityFramework\DF_Default.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DF_Default.edmx</DependentUpon>
+      <LastGenOutput>DF_Default.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

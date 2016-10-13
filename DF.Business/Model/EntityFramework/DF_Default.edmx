@@ -1,0 +1,2152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DF_DefaultModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CompanyType">
+          <Key>
+            <PropertyRef Name="CompanyTypeId" />
+          </Key>
+          <Property Name="CompanyTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Custom_Manage_Master">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="Column_Id" />
+            <PropertyRef Name="ActualColumnName" />
+          </Key>
+          <Property Name="FieldId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Module" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Column_Id" Type="int" Nullable="false" />
+          <Property Name="ActualColumnName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Column_Label" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Column_Type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Field_Type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Column_Description" Type="varchar" MaxLength="200" />
+          <Property Name="HoverText" Type="varchar" MaxLength="200" />
+          <Property Name="InputDataType" Type="varchar" MaxLength="200" />
+          <Property Name="DefaultValue" Type="varchar" MaxLength="200" />
+          <Property Name="DisplayPosition" Type="int" />
+          <Property Name="MaxLength" Type="int" />
+          <Property Name="RequiredField" Type="bit" />
+          <Property Name="MultiValued" Type="bit" />
+          <Property Name="ColumnDrpChkValues" Type="varchar" MaxLength="2000" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Custom_Value_Master">
+          <Key>
+            <PropertyRef Name="CValueId" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="CValueId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Module" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ModuleRecordId" Type="bigint" />
+          <Property Name="ModuleRecordIdTmp" Type="bigint" />
+          <Property Name="CustomField1" Type="varchar(max)" />
+          <Property Name="CustomField2" Type="varchar(max)" />
+          <Property Name="CustomField3" Type="varchar(max)" />
+          <Property Name="CustomField4" Type="varchar(max)" />
+          <Property Name="CustomField5" Type="varchar(max)" />
+          <Property Name="CustomField6" Type="varchar(max)" />
+          <Property Name="CustomField7" Type="varchar(max)" />
+          <Property Name="CustomField8" Type="varchar(max)" />
+          <Property Name="CustomField9" Type="varchar(max)" />
+          <Property Name="CustomField10" Type="varchar(max)" />
+          <Property Name="CustomField11" Type="varchar(max)" />
+          <Property Name="CustomField12" Type="varchar(max)" />
+          <Property Name="CustomField13" Type="varchar(max)" />
+          <Property Name="CustomField14" Type="varchar(max)" />
+          <Property Name="CustomField15" Type="varchar(max)" />
+          <Property Name="CustomField16" Type="varchar(max)" />
+          <Property Name="CustomField17" Type="varchar(max)" />
+          <Property Name="CustomField18" Type="varchar(max)" />
+          <Property Name="CustomField19" Type="varchar(max)" />
+          <Property Name="CustomField20" Type="varchar(max)" />
+          <Property Name="CustomField21" Type="varchar(max)" />
+          <Property Name="CustomField22" Type="varchar(max)" />
+          <Property Name="CustomField23" Type="varchar(max)" />
+          <Property Name="CustomField24" Type="varchar(max)" />
+          <Property Name="CustomField25" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="50" />
+          <Property Name="Extention" Type="nvarchar" MaxLength="50" />
+          <Property Name="Path" Type="nvarchar" MaxLength="500" />
+          <Property Name="FolderId" Type="bigint" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="IsFavourite" Type="bit" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="ErrorLogs">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorMessage" Type="varchar(max)" />
+          <Property Name="Error_LineNo" Type="varchar" MaxLength="20" />
+          <Property Name="Procedure_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Method" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="FolderId" />
+          </Key>
+          <Property Name="FolderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderName" Type="varchar" MaxLength="100" />
+          <Property Name="FolderPath" Type="varchar" MaxLength="200" />
+          <Property Name="Createdon" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="date" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsFavourite" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="UserId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PublicDocuments">
+          <Key>
+            <PropertyRef Name="PublicId" />
+          </Key>
+          <Property Name="PublicId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="50" />
+          <Property Name="Extension" Type="varchar" MaxLength="50" />
+          <Property Name="Path" Type="varchar" MaxLength="200" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SharedDocumnet">
+          <Key>
+            <PropertyRef Name="SharedId" />
+          </Key>
+          <Property Name="SharedId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderId" Type="nchar" MaxLength="10" />
+          <Property Name="DocumentId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="SharedBy" Type="bigint" />
+          <Property Name="SharedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bigint" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="8000" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="ProfilePic" Type="image" />
+          <Property Name="About" Type="nvarchar(max)" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsLocked" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <Function Name="CREATE_NEW_DATABASE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NEW_DATABASE_NAME" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRM_CheckifUserExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRM_Getclients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CRM_GetLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="crm_GetOpportunityDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeadID" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="CRM_InsertClientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+          <Parameter Name="ClientName" Type="varchar" Mode="In" />
+          <Parameter Name="companytype" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="address1" Type="nvarchar" Mode="In" />
+          <Parameter Name="address2" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="char" Mode="In" />
+          <Parameter Name="companywebsite" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConnectionString" Type="varbinary" Mode="In" />
+          <Parameter Name="ServerName" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyLogo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="crm_InsertOpportunityDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Lead_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferMode" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailOptOut" Type="varchar" Mode="In" />
+          <Parameter Name="AccountId" Type="nvarchar" Mode="In" />
+          <Parameter Name="AccountName" Type="varchar" Mode="In" />
+          <Parameter Name="webSite" Type="varchar" Mode="In" />
+          <Parameter Name="Ownership" Type="varchar" Mode="In" />
+          <Parameter Name="Employees" Type="varchar" Mode="In" />
+          <Parameter Name="Industry" Type="varchar" Mode="In" />
+          <Parameter Name="AnnualRevenue" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rating" Type="nvarchar" Mode="In" />
+          <Parameter Name="LeadStatus" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentApplication" Type="nvarchar" Mode="In" />
+          <Parameter Name="mailingAddress" Type="varchar" Mode="In" />
+          <Parameter Name="mailingstreet" Type="varchar" Mode="In" />
+          <Parameter Name="mailingcity" Type="varchar" Mode="In" />
+          <Parameter Name="mailingstate" Type="varchar" Mode="In" />
+          <Parameter Name="mailingzip" Type="nvarchar" Mode="In" />
+          <Parameter Name="mailingcountry" Type="varchar" Mode="In" />
+          <Parameter Name="salesMgr1" Type="varchar" Mode="In" />
+          <Parameter Name="salesMgr2" Type="varchar" Mode="In" />
+          <Parameter Name="office" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="bigint" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="Source" Type="varchar" Mode="In" />
+          <Parameter Name="LeadAssigned" Type="bigint" Mode="In" />
+          <Parameter Name="LeadStage" Type="varchar" Mode="In" />
+          <Parameter Name="FacebookUserName" Type="varchar" Mode="In" />
+          <Parameter Name="TwitterUserName" Type="varchar" Mode="In" />
+          <Parameter Name="LinkedInUserName" Type="varchar" Mode="In" />
+          <Parameter Name="GooglePlusUserName" Type="varchar" Mode="In" />
+          <Parameter Name="PInterestUserName" Type="varchar" Mode="In" />
+          <Parameter Name="SkypeUsername" Type="varchar" Mode="In" />
+          <Parameter Name="EstimatedCloseDate" Type="datetime" Mode="In" />
+          <Parameter Name="NextStep" Type="varchar" Mode="In" />
+          <Parameter Name="Probability" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRM_SaveExtContactDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="IsExists" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="CRM_UpdateClientDetailsByClientId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+          <Parameter Name="ClientName" Type="varchar" Mode="In" />
+          <Parameter Name="companytype" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="address1" Type="nvarchar" Mode="In" />
+          <Parameter Name="address2" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="char" Mode="In" />
+          <Parameter Name="CompanyLogo" Type="varchar" Mode="In" />
+          <Parameter Name="companywebsite" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="crm_UpdateOpportunityDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeadID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lead_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="PreferMode" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailOptOut" Type="varchar" Mode="In" />
+          <Parameter Name="AccountId" Type="nvarchar" Mode="In" />
+          <Parameter Name="AccountName" Type="varchar" Mode="In" />
+          <Parameter Name="webSite" Type="varchar" Mode="In" />
+          <Parameter Name="Ownership" Type="varchar" Mode="In" />
+          <Parameter Name="Employees" Type="varchar" Mode="In" />
+          <Parameter Name="Industry" Type="varchar" Mode="In" />
+          <Parameter Name="AnnualRevenue" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rating" Type="nvarchar" Mode="In" />
+          <Parameter Name="LeadStatus" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentApplication" Type="nvarchar" Mode="In" />
+          <Parameter Name="mailingAddress" Type="varchar" Mode="In" />
+          <Parameter Name="mailingstreet" Type="varchar" Mode="In" />
+          <Parameter Name="mailingcity" Type="varchar" Mode="In" />
+          <Parameter Name="mailingstate" Type="varchar" Mode="In" />
+          <Parameter Name="mailingzip" Type="nvarchar" Mode="In" />
+          <Parameter Name="mailingcountry" Type="varchar" Mode="In" />
+          <Parameter Name="salesMgr1" Type="varchar" Mode="In" />
+          <Parameter Name="salesMgr2" Type="varchar" Mode="In" />
+          <Parameter Name="office" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="bigint" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="Source" Type="varchar" Mode="In" />
+          <Parameter Name="LeadAssigned" Type="bigint" Mode="In" />
+          <Parameter Name="LeadStage" Type="varchar" Mode="In" />
+          <Parameter Name="FacebookUserName" Type="varchar" Mode="In" />
+          <Parameter Name="TwitterUserName" Type="varchar" Mode="In" />
+          <Parameter Name="LinkedInUserName" Type="varchar" Mode="In" />
+          <Parameter Name="GooglePlusUserName" Type="varchar" Mode="In" />
+          <Parameter Name="PInterestUserName" Type="varchar" Mode="In" />
+          <Parameter Name="SkypeUsername" Type="varchar" Mode="In" />
+          <Parameter Name="EstimatedCloseDate" Type="datetime" Mode="In" />
+          <Parameter Name="NextStep" Type="varchar" Mode="In" />
+          <Parameter Name="Probability" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRMDefault_InsertClientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientName" Type="varchar" Mode="In" />
+          <Parameter Name="ConnectionString" Type="varbinary" Mode="In" />
+          <Parameter Name="ServerName" Type="varchar" Mode="In" />
+          <Parameter Name="companywebsite" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DELETE_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DELETE_ClientDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DELETE_ClientDBNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateCompanyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentName" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="FolderId" Type="bigint" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="IsFavourite" Type="bit" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateErrorLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ErrorMessage" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Error_LineNo" Type="varchar" Mode="In" />
+          <Parameter Name="Procedure_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Method" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FolderName" Type="varchar" Mode="In" />
+          <Parameter Name="FolderPath" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="IsFavourite" Type="bit" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_CreatePublicDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentName" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateSharedDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FolderId" Type="nvarchar" Mode="In" />
+          <Parameter Name="DocumentId" Type="bigint" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="SharedBy" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+          <Parameter Name="ProfilePic" Type="image" Mode="In" />
+          <Parameter Name="About" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_CreateUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserType" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DF_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_GetAllCompanyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllCompanyTypeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_GetAllDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllErrorLogs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllPublicDocumets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllPublicDocumetsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PublicId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_GetAllSharedDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DF_GetAllUserTypeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_GetDocumentById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_GetFolderById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FolderId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_GetStatusById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_GetUsersDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateCompanyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyTypeId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentId" Type="bigint" Mode="In" />
+          <Parameter Name="DocumentName" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="FolderId" Type="bigint" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="IsFavourite" Type="bit" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FolderId" Type="bigint" Mode="In" />
+          <Parameter Name="FolderName" Type="varchar" Mode="In" />
+          <Parameter Name="FolderPath" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+          <Parameter Name="IsFavourite" Type="bit" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdatePublicDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PublicId" Type="bigint" Mode="In" />
+          <Parameter Name="DocumentName" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+          <Parameter Name="ProfilePic" Type="image" Mode="In" />
+          <Parameter Name="About" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_UpdateUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="UserType" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GET_CLIENT_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLIENTID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_CREATE_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="ConnectionString" Type="varchar" Mode="In" />
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+          <Parameter Name="ServerName" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Timesheet_Type" Type="varchar" Mode="In" />
+          <Parameter Name="Timesheet" Type="varchar" Mode="In" />
+          <Parameter Name="address1" Type="nvarchar" Mode="In" />
+          <Parameter Name="address2" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="char" Mode="In" />
+          <Parameter Name="companyphone" Type="nvarchar" Mode="In" />
+          <Parameter Name="fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="companywebsite" Type="nvarchar" Mode="In" />
+          <Parameter Name="active" Type="bit" Mode="In" />
+          <Parameter Name="restoredemodata" Type="bit" Mode="In" />
+          <Parameter Name="companylogo" Type="nvarchar" Mode="In" />
+          <Parameter Name="state" Type="char" Mode="In" />
+          <Parameter Name="zipcode" Type="nvarchar" Mode="In" />
+          <Parameter Name="createddate" Type="datetime" Mode="In" />
+          <Parameter Name="companytype" Type="nvarchar" Mode="In" />
+          <Parameter Name="expirydate" Type="datetime" Mode="In" />
+          <Parameter Name="SuperAdminFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminLastName" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminEmail" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminLoginID" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminPassword" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminPhone" Type="varchar" Mode="In" />
+          <Parameter Name="AdminFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="AdminLastName" Type="varchar" Mode="In" />
+          <Parameter Name="AdminEmail" Type="varchar" Mode="In" />
+          <Parameter Name="AdminLoginID" Type="varchar" Mode="In" />
+          <Parameter Name="AdminPassword" Type="varchar" Mode="In" />
+          <Parameter Name="AdminPhone" Type="varchar" Mode="In" />
+          <Parameter Name="strFuntion" Type="varchar" Mode="In" />
+          <Parameter Name="TimeZone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_CREATE_CLIENT1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="ConnectionString" Type="varchar" Mode="In" />
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+          <Parameter Name="ServerName" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Timesheet_Type" Type="varchar" Mode="In" />
+          <Parameter Name="Timesheet" Type="varchar" Mode="In" />
+          <Parameter Name="address1" Type="nvarchar" Mode="In" />
+          <Parameter Name="address2" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="char" Mode="In" />
+          <Parameter Name="companyphone" Type="nvarchar" Mode="In" />
+          <Parameter Name="fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="companywebsite" Type="nvarchar" Mode="In" />
+          <Parameter Name="active" Type="bit" Mode="In" />
+          <Parameter Name="restoredemodata" Type="bit" Mode="In" />
+          <Parameter Name="companylogo" Type="nvarchar" Mode="In" />
+          <Parameter Name="state" Type="char" Mode="In" />
+          <Parameter Name="zipcode" Type="nvarchar" Mode="In" />
+          <Parameter Name="createddate" Type="datetime" Mode="In" />
+          <Parameter Name="companytype" Type="nvarchar" Mode="In" />
+          <Parameter Name="expirydate" Type="datetime" Mode="In" />
+          <Parameter Name="SuperAdminFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminLastName" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminEmail" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminLoginID" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminPassword" Type="varchar" Mode="In" />
+          <Parameter Name="SuperAdminPhone" Type="varchar" Mode="In" />
+          <Parameter Name="AdminFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="AdminLastName" Type="varchar" Mode="In" />
+          <Parameter Name="AdminEmail" Type="varchar" Mode="In" />
+          <Parameter Name="AdminLoginID" Type="varchar" Mode="In" />
+          <Parameter Name="AdminPassword" Type="varchar" Mode="In" />
+          <Parameter Name="AdminPhone" Type="varchar" Mode="In" />
+          <Parameter Name="strFuntion" Type="varchar" Mode="In" />
+          <Parameter Name="TimeZone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_Custom_Manage_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FieldId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="Module" Type="varchar" Mode="In" />
+          <Parameter Name="Column_Id" Type="int" Mode="In" />
+          <Parameter Name="ActualColumnName" Type="varchar" Mode="In" />
+          <Parameter Name="Column_Label" Type="varchar" Mode="In" />
+          <Parameter Name="Column_Description" Type="varchar" Mode="In" />
+          <Parameter Name="HoverText" Type="varchar" Mode="In" />
+          <Parameter Name="Column_Type" Type="varchar" Mode="In" />
+          <Parameter Name="InputDataType" Type="varchar" Mode="In" />
+          <Parameter Name="DefaultValue" Type="varchar" Mode="In" />
+          <Parameter Name="MaxLength" Type="int" Mode="In" />
+          <Parameter Name="RequiredField" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="int" Mode="In" />
+          <Parameter Name="flag" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_Custom_Manage_Value_Master" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CValueId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="Module" Type="varchar" Mode="In" />
+          <Parameter Name="ModuleRecordId" Type="bigint" Mode="In" />
+          <Parameter Name="ModuleRecordIdTmp" Type="bigint" Mode="In" />
+          <Parameter Name="Query" Type="varchar(max)" Mode="In" />
+          <Parameter Name="flag" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_EXECUTE_SCRIPT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_ACTIVE_CLIENTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SITE_TYPE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_ALL_Client" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_GET_ClientDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_DASHBOARD_DATA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_GET_SITE_DETAILS_CLIENTID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_Validate_Client" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_VALIDATE_CLIENT_EXPIRY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLIENTID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_VALIDATE_CLIENT_EXPIRY_BY_TYPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLIENTID" Type="varchar" Mode="In" />
+          <Parameter Name="SITE_TYPE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="VALIDATE_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLIENTID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="VALIDATE_CLIENT_BY_TYPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLIENTID" Type="varchar" Mode="In" />
+          <Parameter Name="SITE_TYPE" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DF_DefaultModelStoreContainer">
+          <EntitySet Name="CompanyType" EntityType="Self.CompanyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custom_Manage_Master" EntityType="Self.Custom_Manage_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Folder" EntityType="Self.Folder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicDocuments" EntityType="Self.PublicDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SharedDocumnet" EntityType="Self.SharedDocumnet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custom_Value_Master" EntityType="Self.Custom_Value_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Custom_Value_Master].[CValueId] AS [CValueId], 
+    [Custom_Value_Master].[UserID] AS [UserID], 
+    [Custom_Value_Master].[Module] AS [Module], 
+    [Custom_Value_Master].[ModuleRecordId] AS [ModuleRecordId], 
+    [Custom_Value_Master].[ModuleRecordIdTmp] AS [ModuleRecordIdTmp], 
+    [Custom_Value_Master].[CustomField1] AS [CustomField1], 
+    [Custom_Value_Master].[CustomField2] AS [CustomField2], 
+    [Custom_Value_Master].[CustomField3] AS [CustomField3], 
+    [Custom_Value_Master].[CustomField4] AS [CustomField4], 
+    [Custom_Value_Master].[CustomField5] AS [CustomField5], 
+    [Custom_Value_Master].[CustomField6] AS [CustomField6], 
+    [Custom_Value_Master].[CustomField7] AS [CustomField7], 
+    [Custom_Value_Master].[CustomField8] AS [CustomField8], 
+    [Custom_Value_Master].[CustomField9] AS [CustomField9], 
+    [Custom_Value_Master].[CustomField10] AS [CustomField10], 
+    [Custom_Value_Master].[CustomField11] AS [CustomField11], 
+    [Custom_Value_Master].[CustomField12] AS [CustomField12], 
+    [Custom_Value_Master].[CustomField13] AS [CustomField13], 
+    [Custom_Value_Master].[CustomField14] AS [CustomField14], 
+    [Custom_Value_Master].[CustomField15] AS [CustomField15], 
+    [Custom_Value_Master].[CustomField16] AS [CustomField16], 
+    [Custom_Value_Master].[CustomField17] AS [CustomField17], 
+    [Custom_Value_Master].[CustomField18] AS [CustomField18], 
+    [Custom_Value_Master].[CustomField19] AS [CustomField19], 
+    [Custom_Value_Master].[CustomField20] AS [CustomField20], 
+    [Custom_Value_Master].[CustomField21] AS [CustomField21], 
+    [Custom_Value_Master].[CustomField22] AS [CustomField22], 
+    [Custom_Value_Master].[CustomField23] AS [CustomField23], 
+    [Custom_Value_Master].[CustomField24] AS [CustomField24], 
+    [Custom_Value_Master].[CustomField25] AS [CustomField25], 
+    [Custom_Value_Master].[CreatedDate] AS [CreatedDate], 
+    [Custom_Value_Master].[ModifiedDate] AS [ModifiedDate]
+    FROM [dbo].[Custom_Value_Master] AS [Custom_Value_Master]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DF_DefaultModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyType">
+          <Key>
+            <PropertyRef Name="CompanyTypeId" />
+          </Key>
+          <Property Name="CompanyTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Custom_Manage_Master">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="Column_Id" />
+            <PropertyRef Name="ActualColumnName" />
+          </Key>
+          <Property Name="FieldId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="Module" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Column_Id" Type="Int32" Nullable="false" />
+          <Property Name="ActualColumnName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Column_Label" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Column_Type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Field_Type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Column_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HoverText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InputDataType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayPosition" Type="Int32" />
+          <Property Name="MaxLength" Type="Int32" />
+          <Property Name="RequiredField" Type="Boolean" />
+          <Property Name="MultiValued" Type="Boolean" />
+          <Property Name="ColumnDrpChkValues" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extention" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FolderId" Type="Int64" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFavourite" Type="Boolean" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Error_LineNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Procedure_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Method" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="FolderId" />
+          </Key>
+          <Property Name="FolderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Createdon" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsFavourite" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UserId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="PublicDocument">
+          <Key>
+            <PropertyRef Name="PublicId" />
+          </Key>
+          <Property Name="PublicId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SharedDocumnet">
+          <Key>
+            <PropertyRef Name="SharedId" />
+          </Key>
+          <Property Name="SharedId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DocumentId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="SharedBy" Type="Int64" />
+          <Property Name="SharedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int64" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfilePic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsLocked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Custom_Value_Master">
+          <Key>
+            <PropertyRef Name="CValueId" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="ModifiedDate" />
+          </Key>
+          <Property Name="CValueId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="Module" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleRecordId" Type="Int64" />
+          <Property Name="ModuleRecordIdTmp" Type="Int64" />
+          <Property Name="CustomField1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField11" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField12" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField13" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField14" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField15" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField16" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField17" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField18" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField19" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField20" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField21" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField22" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField23" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField24" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomField25" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DF_DefaultEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyTypes" EntityType="Self.CompanyType" />
+          <EntitySet Name="Custom_Manage_Master" EntityType="Self.Custom_Manage_Master" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+          <EntitySet Name="Folders" EntityType="Self.Folder" />
+          <EntitySet Name="PublicDocuments" EntityType="Self.PublicDocument" />
+          <EntitySet Name="SharedDocumnets" EntityType="Self.SharedDocumnet" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="Custom_Value_Master" EntityType="Self.Custom_Value_Master" />
+          <FunctionImport Name="CREATE_NEW_DATABASE">
+          <Parameter Name="NEW_DATABASE_NAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRM_CheckifUserExists">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRM_Getclients" />
+          <FunctionImport Name="CRM_GetLogin">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="crm_GetOpportunityDetail">
+          <Parameter Name="LeadID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CRM_InsertClientDetails">
+            <Parameter Name="ClientID" Mode="In" Type="String" />
+            <Parameter Name="ClientName" Mode="In" Type="String" />
+            <Parameter Name="companytype" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="address1" Mode="In" Type="String" />
+            <Parameter Name="address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="companywebsite" Mode="In" Type="String" />
+            <Parameter Name="ConnectionString" Mode="In" Type="Binary" />
+            <Parameter Name="ServerName" Mode="In" Type="String" />
+            <Parameter Name="CompanyLogo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="crm_InsertOpportunityDetail">
+            <Parameter Name="Lead_Name" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="fax" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="PreferTime" Mode="In" Type="String" />
+            <Parameter Name="PreferMode" Mode="In" Type="String" />
+            <Parameter Name="EmailOptOut" Mode="In" Type="String" />
+            <Parameter Name="AccountId" Mode="In" Type="String" />
+            <Parameter Name="AccountName" Mode="In" Type="String" />
+            <Parameter Name="webSite" Mode="In" Type="String" />
+            <Parameter Name="Ownership" Mode="In" Type="String" />
+            <Parameter Name="Employees" Mode="In" Type="String" />
+            <Parameter Name="Industry" Mode="In" Type="String" />
+            <Parameter Name="AnnualRevenue" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="LeadStatus" Mode="In" Type="String" />
+            <Parameter Name="CurrentApplication" Mode="In" Type="String" />
+            <Parameter Name="mailingAddress" Mode="In" Type="String" />
+            <Parameter Name="mailingstreet" Mode="In" Type="String" />
+            <Parameter Name="mailingcity" Mode="In" Type="String" />
+            <Parameter Name="mailingstate" Mode="In" Type="String" />
+            <Parameter Name="mailingzip" Mode="In" Type="String" />
+            <Parameter Name="mailingcountry" Mode="In" Type="String" />
+            <Parameter Name="salesMgr1" Mode="In" Type="String" />
+            <Parameter Name="salesMgr2" Mode="In" Type="String" />
+            <Parameter Name="office" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int64" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="LeadAssigned" Mode="In" Type="Int64" />
+            <Parameter Name="LeadStage" Mode="In" Type="String" />
+            <Parameter Name="FacebookUserName" Mode="In" Type="String" />
+            <Parameter Name="TwitterUserName" Mode="In" Type="String" />
+            <Parameter Name="LinkedInUserName" Mode="In" Type="String" />
+            <Parameter Name="GooglePlusUserName" Mode="In" Type="String" />
+            <Parameter Name="PInterestUserName" Mode="In" Type="String" />
+            <Parameter Name="SkypeUsername" Mode="In" Type="String" />
+            <Parameter Name="EstimatedCloseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="NextStep" Mode="In" Type="String" />
+            <Parameter Name="Probability" Mode="In" Type="String" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRM_SaveExtContactDetails">
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="IsExists" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CRM_UpdateClientDetailsByClientId">
+            <Parameter Name="ClientID" Mode="In" Type="String" />
+            <Parameter Name="ClientName" Mode="In" Type="String" />
+            <Parameter Name="companytype" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="address1" Mode="In" Type="String" />
+            <Parameter Name="address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="CompanyLogo" Mode="In" Type="String" />
+            <Parameter Name="companywebsite" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="crm_UpdateOpportunityDetail">
+            <Parameter Name="LeadID" Mode="In" Type="String" />
+            <Parameter Name="Lead_Name" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="fax" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="PreferTime" Mode="In" Type="String" />
+            <Parameter Name="PreferMode" Mode="In" Type="String" />
+            <Parameter Name="EmailOptOut" Mode="In" Type="String" />
+            <Parameter Name="AccountId" Mode="In" Type="String" />
+            <Parameter Name="AccountName" Mode="In" Type="String" />
+            <Parameter Name="webSite" Mode="In" Type="String" />
+            <Parameter Name="Ownership" Mode="In" Type="String" />
+            <Parameter Name="Employees" Mode="In" Type="String" />
+            <Parameter Name="Industry" Mode="In" Type="String" />
+            <Parameter Name="AnnualRevenue" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="String" />
+            <Parameter Name="LeadStatus" Mode="In" Type="String" />
+            <Parameter Name="CurrentApplication" Mode="In" Type="String" />
+            <Parameter Name="mailingAddress" Mode="In" Type="String" />
+            <Parameter Name="mailingstreet" Mode="In" Type="String" />
+            <Parameter Name="mailingcity" Mode="In" Type="String" />
+            <Parameter Name="mailingstate" Mode="In" Type="String" />
+            <Parameter Name="mailingzip" Mode="In" Type="String" />
+            <Parameter Name="mailingcountry" Mode="In" Type="String" />
+            <Parameter Name="salesMgr1" Mode="In" Type="String" />
+            <Parameter Name="salesMgr2" Mode="In" Type="String" />
+            <Parameter Name="office" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int64" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="LeadAssigned" Mode="In" Type="Int64" />
+            <Parameter Name="LeadStage" Mode="In" Type="String" />
+            <Parameter Name="FacebookUserName" Mode="In" Type="String" />
+            <Parameter Name="TwitterUserName" Mode="In" Type="String" />
+            <Parameter Name="LinkedInUserName" Mode="In" Type="String" />
+            <Parameter Name="GooglePlusUserName" Mode="In" Type="String" />
+            <Parameter Name="PInterestUserName" Mode="In" Type="String" />
+            <Parameter Name="SkypeUsername" Mode="In" Type="String" />
+            <Parameter Name="EstimatedCloseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="NextStep" Mode="In" Type="String" />
+            <Parameter Name="Probability" Mode="In" Type="String" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRMDefault_InsertClientDetails">
+            <Parameter Name="ClientName" Mode="In" Type="String" />
+            <Parameter Name="ConnectionString" Mode="In" Type="Binary" />
+            <Parameter Name="ServerName" Mode="In" Type="String" />
+            <Parameter Name="companywebsite" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_CLIENT">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_ClientDB">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_ClientDBNew">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateCompanyType">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateDocument">
+            <Parameter Name="DocumentName" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="FolderId" Mode="In" Type="Int64" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="IsFavourite" Mode="In" Type="Boolean" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateErrorLog">
+            <Parameter Name="ErrorMessage" Mode="In" Type="String" />
+            <Parameter Name="Error_LineNo" Mode="In" Type="String" />
+            <Parameter Name="Procedure_Name" Mode="In" Type="String" />
+            <Parameter Name="Method" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateFolder">
+            <Parameter Name="FolderName" Mode="In" Type="String" />
+            <Parameter Name="FolderPath" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsFavourite" Mode="In" Type="Boolean" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreatePublicDocuments">
+            <Parameter Name="DocumentName" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateSharedDocuments">
+            <Parameter Name="FolderId" Mode="In" Type="String" />
+            <Parameter Name="DocumentId" Mode="In" Type="Int64" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="SharedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateStatus">
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
+            <Parameter Name="About" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_CreateUserType">
+            <Parameter Name="UserType" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetAllCompanyType" ReturnType="Collection(DF_DefaultModel.DF_GetAllCompanyType_Result)" />
+          <FunctionImport Name="DF_GetAllCompanyTypeById" ReturnType="Collection(DF_DefaultModel.DF_GetAllCompanyTypeById_Result)">
+          <Parameter Name="CompanyTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetAllDocument" ReturnType="Collection(DF_DefaultModel.DF_GetAllDocument_Result)" />
+          <FunctionImport Name="DF_GetAllErrorLogs" ReturnType="Collection(DF_DefaultModel.DF_GetAllErrorLogs_Result)" />
+          <FunctionImport Name="DF_GetAllFolder" ReturnType="Collection(DF_DefaultModel.DF_GetAllFolder_Result)" />
+          <FunctionImport Name="DF_GetAllPublicDocumets" ReturnType="Collection(DF_DefaultModel.DF_GetAllPublicDocumets_Result)" />
+          <FunctionImport Name="DF_GetAllPublicDocumetsById" ReturnType="Collection(DF_DefaultModel.DF_GetAllPublicDocumetsById_Result)">
+          <Parameter Name="PublicId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetAllSharedDocuments" ReturnType="Collection(DF_DefaultModel.DF_GetAllSharedDocuments_Result)" />
+          <FunctionImport Name="DF_GetAllStatus" ReturnType="Collection(DF_DefaultModel.DF_GetAllStatus_Result)" />
+          <FunctionImport Name="DF_GetAllUsers" ReturnType="Collection(DF_DefaultModel.DF_GetAllUsers_Result)" />
+          <FunctionImport Name="DF_GetAllUserType" ReturnType="Collection(DF_DefaultModel.DF_GetAllUserType_Result)" />
+          <FunctionImport Name="DF_GetAllUserTypeById" ReturnType="Collection(DF_DefaultModel.DF_GetAllUserTypeById_Result)">
+          <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetDocumentById" ReturnType="Collection(DF_DefaultModel.DF_GetDocumentById_Result)">
+          <Parameter Name="DocumentId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetFolderById" ReturnType="Collection(DF_DefaultModel.DF_GetFolderById_Result)">
+          <Parameter Name="FolderId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetStatusById" ReturnType="Collection(DF_DefaultModel.DF_GetStatusById_Result)">
+          <Parameter Name="StatusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_GetUsersDetailsById" ReturnType="Collection(DF_DefaultModel.DF_GetUsersDetailsById_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateCompanyType">
+            <Parameter Name="CompanyTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateDocument">
+            <Parameter Name="DocumentId" Mode="In" Type="Int64" />
+            <Parameter Name="DocumentName" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="FolderId" Mode="In" Type="Int64" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="IsFavourite" Mode="In" Type="Boolean" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateFolder">
+            <Parameter Name="FolderId" Mode="In" Type="Int64" />
+            <Parameter Name="FolderName" Mode="In" Type="String" />
+            <Parameter Name="FolderPath" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+            <Parameter Name="IsFavourite" Mode="In" Type="Boolean" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdatePublicDocument">
+            <Parameter Name="PublicId" Mode="In" Type="Int64" />
+            <Parameter Name="DocumentName" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateStatus">
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
+            <Parameter Name="About" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DF_UpdateUserType">
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="UserType" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_CLIENT_DETAILS">
+          <Parameter Name="CLIENTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserLogin">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_CREATE_CLIENT">
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ConnectionString" Mode="In" Type="String" />
+            <Parameter Name="ClientID" Mode="In" Type="String" />
+            <Parameter Name="ServerName" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Timesheet_Type" Mode="In" Type="String" />
+            <Parameter Name="Timesheet" Mode="In" Type="String" />
+            <Parameter Name="address1" Mode="In" Type="String" />
+            <Parameter Name="address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="companyphone" Mode="In" Type="String" />
+            <Parameter Name="fax" Mode="In" Type="String" />
+            <Parameter Name="companywebsite" Mode="In" Type="String" />
+            <Parameter Name="active" Mode="In" Type="Boolean" />
+            <Parameter Name="restoredemodata" Mode="In" Type="Boolean" />
+            <Parameter Name="companylogo" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="zipcode" Mode="In" Type="String" />
+            <Parameter Name="createddate" Mode="In" Type="DateTime" />
+            <Parameter Name="companytype" Mode="In" Type="String" />
+            <Parameter Name="expirydate" Mode="In" Type="DateTime" />
+            <Parameter Name="SuperAdminFirstName" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminLastName" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminEmail" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminLoginID" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminPassword" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminPhone" Mode="In" Type="String" />
+            <Parameter Name="AdminFirstName" Mode="In" Type="String" />
+            <Parameter Name="AdminLastName" Mode="In" Type="String" />
+            <Parameter Name="AdminEmail" Mode="In" Type="String" />
+            <Parameter Name="AdminLoginID" Mode="In" Type="String" />
+            <Parameter Name="AdminPassword" Mode="In" Type="String" />
+            <Parameter Name="AdminPhone" Mode="In" Type="String" />
+            <Parameter Name="strFuntion" Mode="In" Type="String" />
+            <Parameter Name="TimeZone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_CREATE_CLIENT1">
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ConnectionString" Mode="In" Type="String" />
+            <Parameter Name="ClientID" Mode="In" Type="String" />
+            <Parameter Name="ServerName" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Timesheet_Type" Mode="In" Type="String" />
+            <Parameter Name="Timesheet" Mode="In" Type="String" />
+            <Parameter Name="address1" Mode="In" Type="String" />
+            <Parameter Name="address2" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="companyphone" Mode="In" Type="String" />
+            <Parameter Name="fax" Mode="In" Type="String" />
+            <Parameter Name="companywebsite" Mode="In" Type="String" />
+            <Parameter Name="active" Mode="In" Type="Boolean" />
+            <Parameter Name="restoredemodata" Mode="In" Type="Boolean" />
+            <Parameter Name="companylogo" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="zipcode" Mode="In" Type="String" />
+            <Parameter Name="createddate" Mode="In" Type="DateTime" />
+            <Parameter Name="companytype" Mode="In" Type="String" />
+            <Parameter Name="expirydate" Mode="In" Type="DateTime" />
+            <Parameter Name="SuperAdminFirstName" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminLastName" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminEmail" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminLoginID" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminPassword" Mode="In" Type="String" />
+            <Parameter Name="SuperAdminPhone" Mode="In" Type="String" />
+            <Parameter Name="AdminFirstName" Mode="In" Type="String" />
+            <Parameter Name="AdminLastName" Mode="In" Type="String" />
+            <Parameter Name="AdminEmail" Mode="In" Type="String" />
+            <Parameter Name="AdminLoginID" Mode="In" Type="String" />
+            <Parameter Name="AdminPassword" Mode="In" Type="String" />
+            <Parameter Name="AdminPhone" Mode="In" Type="String" />
+            <Parameter Name="strFuntion" Mode="In" Type="String" />
+            <Parameter Name="TimeZone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Custom_Manage_Master" ReturnType="Collection(Decimal)">
+            <Parameter Name="FieldId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="Module" Mode="In" Type="String" />
+            <Parameter Name="Column_Id" Mode="In" Type="Int32" />
+            <Parameter Name="ActualColumnName" Mode="In" Type="String" />
+            <Parameter Name="Column_Label" Mode="In" Type="String" />
+            <Parameter Name="Column_Description" Mode="In" Type="String" />
+            <Parameter Name="HoverText" Mode="In" Type="String" />
+            <Parameter Name="Column_Type" Mode="In" Type="String" />
+            <Parameter Name="InputDataType" Mode="In" Type="String" />
+            <Parameter Name="DefaultValue" Mode="In" Type="String" />
+            <Parameter Name="MaxLength" Mode="In" Type="Int32" />
+            <Parameter Name="RequiredField" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Int32" />
+            <Parameter Name="flag" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Custom_Manage_Value_Master" ReturnType="Collection(DF_DefaultModel.Usp_Custom_Manage_Value_Master_Result)">
+            <Parameter Name="CValueId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="Module" Mode="In" Type="String" />
+            <Parameter Name="ModuleRecordId" Mode="In" Type="Int64" />
+            <Parameter Name="ModuleRecordIdTmp" Mode="In" Type="Int64" />
+            <Parameter Name="Query" Mode="In" Type="String" />
+            <Parameter Name="flag" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_EXECUTE_SCRIPT">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_ACTIVE_CLIENTS">
+          <Parameter Name="SITE_TYPE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_ALL_Client" />
+          <FunctionImport Name="USP_GET_ClientDetail">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_DASHBOARD_DATA" />
+          <FunctionImport Name="USP_GET_SITE_DETAILS_CLIENTID">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_Validate_Client">
+          <Parameter Name="ClientID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_VALIDATE_CLIENT_EXPIRY">
+          <Parameter Name="CLIENTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_VALIDATE_CLIENT_EXPIRY_BY_TYPE">
+            <Parameter Name="CLIENTID" Mode="In" Type="String" />
+            <Parameter Name="SITE_TYPE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VALIDATE_CLIENT">
+          <Parameter Name="CLIENTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VALIDATE_CLIENT_BY_TYPE">
+            <Parameter Name="CLIENTID" Mode="In" Type="String" />
+            <Parameter Name="SITE_TYPE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DF_DeleteUser">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="DF_GetAllCompanyType_Result">
+          <Property Type="Int32" Name="CompanyTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllCompanyTypeById_Result">
+          <Property Type="Int32" Name="CompanyTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllDocument_Result">
+          <Property Type="Int64" Name="DocumentId" Nullable="false" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Extention" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Path" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="FolderId" Nullable="true" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsFavourite" Nullable="true" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Int32" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllErrorLogs_Result">
+          <Property Type="Int64" Name="ErrorId" Nullable="false" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" />
+          <Property Type="String" Name="Error_LineNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Procedure_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Method" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllFolder_Result">
+          <Property Type="Int64" Name="FolderId" Nullable="false" />
+          <Property Type="String" Name="FolderName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FolderPath" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsFavourite" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int64" Name="UserId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllPublicDocumets_Result">
+          <Property Type="Int64" Name="PublicId" Nullable="false" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Extension" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Path" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllPublicDocumetsById_Result">
+          <Property Type="Int64" Name="PublicId" Nullable="false" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Extension" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Path" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllSharedDocuments_Result">
+          <Property Type="Int64" Name="SharedId" Nullable="false" />
+          <Property Type="String" Name="FolderId" Nullable="true" MaxLength="10" />
+          <Property Type="Int64" Name="DocumentId" Nullable="true" />
+          <Property Type="Int64" Name="UserId" Nullable="true" />
+          <Property Type="Int64" Name="SharedBy" Nullable="true" />
+          <Property Type="DateTime" Name="SharedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllStatus_Result">
+          <Property Type="Int32" Name="StatusId" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllUsers_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="ProfilePic" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="About" Nullable="true" />
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedON" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsLocked" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllUserType_Result">
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="String" Name="UserType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="DF_GetAllUserTypeById_Result">
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="String" Name="UserType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="DF_GetDocumentById_Result">
+          <Property Type="Int64" Name="DocumentId" Nullable="false" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Extention" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Path" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="FolderId" Nullable="true" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsFavourite" Nullable="true" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Int32" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetFolderById_Result">
+          <Property Type="Int64" Name="FolderId" Nullable="false" />
+          <Property Type="String" Name="FolderName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FolderPath" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsFavourite" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int64" Name="UserId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetStatusById_Result">
+          <Property Type="Int32" Name="StatusId" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DF_GetUsersDetailsById_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="ProfilePic" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="About" Nullable="true" />
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedON" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsLocked" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_Custom_Manage_Value_Master_Result">
+          <Property Type="Int64" Name="CValueId" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Module" Nullable="false" MaxLength="20" />
+          <Property Type="Int64" Name="ModuleRecordId" Nullable="true" />
+          <Property Type="Int64" Name="ModuleRecordIdTmp" Nullable="true" />
+          <Property Type="String" Name="CustomField1" Nullable="true" />
+          <Property Type="String" Name="CustomField2" Nullable="true" />
+          <Property Type="String" Name="CustomField3" Nullable="true" />
+          <Property Type="String" Name="CustomField4" Nullable="true" />
+          <Property Type="String" Name="CustomField5" Nullable="true" />
+          <Property Type="String" Name="CustomField6" Nullable="true" />
+          <Property Type="String" Name="CustomField7" Nullable="true" />
+          <Property Type="String" Name="CustomField8" Nullable="true" />
+          <Property Type="String" Name="CustomField9" Nullable="true" />
+          <Property Type="String" Name="CustomField10" Nullable="true" />
+          <Property Type="String" Name="CustomField11" Nullable="true" />
+          <Property Type="String" Name="CustomField12" Nullable="true" />
+          <Property Type="String" Name="CustomField13" Nullable="true" />
+          <Property Type="String" Name="CustomField14" Nullable="true" />
+          <Property Type="String" Name="CustomField15" Nullable="true" />
+          <Property Type="String" Name="CustomField16" Nullable="true" />
+          <Property Type="String" Name="CustomField17" Nullable="true" />
+          <Property Type="String" Name="CustomField18" Nullable="true" />
+          <Property Type="String" Name="CustomField19" Nullable="true" />
+          <Property Type="String" Name="CustomField20" Nullable="true" />
+          <Property Type="String" Name="CustomField21" Nullable="true" />
+          <Property Type="String" Name="CustomField22" Nullable="true" />
+          <Property Type="String" Name="CustomField23" Nullable="true" />
+          <Property Type="String" Name="CustomField24" Nullable="true" />
+          <Property Type="String" Name="CustomField25" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DF_DefaultModelStoreContainer" CdmEntityContainer="DF_DefaultEntities">
+          <EntitySetMapping Name="CompanyTypes">
+            <EntityTypeMapping TypeName="DF_DefaultModel.CompanyType">
+              <MappingFragment StoreEntitySet="CompanyType">
+                <ScalarProperty Name="CompanyTypeId" ColumnName="CompanyTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Custom_Manage_Master">
+            <EntityTypeMapping TypeName="DF_DefaultModel.Custom_Manage_Master">
+              <MappingFragment StoreEntitySet="Custom_Manage_Master">
+                <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Column_Id" ColumnName="Column_Id" />
+                <ScalarProperty Name="ActualColumnName" ColumnName="ActualColumnName" />
+                <ScalarProperty Name="Column_Label" ColumnName="Column_Label" />
+                <ScalarProperty Name="Column_Type" ColumnName="Column_Type" />
+                <ScalarProperty Name="Field_Type" ColumnName="Field_Type" />
+                <ScalarProperty Name="Column_Description" ColumnName="Column_Description" />
+                <ScalarProperty Name="HoverText" ColumnName="HoverText" />
+                <ScalarProperty Name="InputDataType" ColumnName="InputDataType" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="DisplayPosition" ColumnName="DisplayPosition" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="RequiredField" ColumnName="RequiredField" />
+                <ScalarProperty Name="MultiValued" ColumnName="MultiValued" />
+                <ScalarProperty Name="ColumnDrpChkValues" ColumnName="ColumnDrpChkValues" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="DF_DefaultModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="DF_DefaultModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLogs">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="Error_LineNo" ColumnName="Error_LineNo" />
+                <ScalarProperty Name="Procedure_Name" ColumnName="Procedure_Name" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Folders">
+            <EntityTypeMapping TypeName="DF_DefaultModel.Folder">
+              <MappingFragment StoreEntitySet="Folder">
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+                <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicDocuments">
+            <EntityTypeMapping TypeName="DF_DefaultModel.PublicDocument">
+              <MappingFragment StoreEntitySet="PublicDocuments">
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedDocumnets">
+            <EntityTypeMapping TypeName="DF_DefaultModel.SharedDocumnet">
+              <MappingFragment StoreEntitySet="SharedDocumnet">
+                <ScalarProperty Name="SharedId" ColumnName="SharedId" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SharedBy" ColumnName="SharedBy" />
+                <ScalarProperty Name="SharedOn" ColumnName="SharedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DF_DefaultModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DF_DefaultModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="DF_DefaultModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Custom_Value_Master">
+            <EntityTypeMapping TypeName="DF_DefaultModel.Custom_Value_Master">
+              <MappingFragment StoreEntitySet="Custom_Value_Master">
+                <ScalarProperty Name="CValueId" ColumnName="CValueId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ModuleRecordId" ColumnName="ModuleRecordId" />
+                <ScalarProperty Name="ModuleRecordIdTmp" ColumnName="ModuleRecordIdTmp" />
+                <ScalarProperty Name="CustomField1" ColumnName="CustomField1" />
+                <ScalarProperty Name="CustomField2" ColumnName="CustomField2" />
+                <ScalarProperty Name="CustomField3" ColumnName="CustomField3" />
+                <ScalarProperty Name="CustomField4" ColumnName="CustomField4" />
+                <ScalarProperty Name="CustomField5" ColumnName="CustomField5" />
+                <ScalarProperty Name="CustomField6" ColumnName="CustomField6" />
+                <ScalarProperty Name="CustomField7" ColumnName="CustomField7" />
+                <ScalarProperty Name="CustomField8" ColumnName="CustomField8" />
+                <ScalarProperty Name="CustomField9" ColumnName="CustomField9" />
+                <ScalarProperty Name="CustomField10" ColumnName="CustomField10" />
+                <ScalarProperty Name="CustomField11" ColumnName="CustomField11" />
+                <ScalarProperty Name="CustomField12" ColumnName="CustomField12" />
+                <ScalarProperty Name="CustomField13" ColumnName="CustomField13" />
+                <ScalarProperty Name="CustomField14" ColumnName="CustomField14" />
+                <ScalarProperty Name="CustomField15" ColumnName="CustomField15" />
+                <ScalarProperty Name="CustomField16" ColumnName="CustomField16" />
+                <ScalarProperty Name="CustomField17" ColumnName="CustomField17" />
+                <ScalarProperty Name="CustomField18" ColumnName="CustomField18" />
+                <ScalarProperty Name="CustomField19" ColumnName="CustomField19" />
+                <ScalarProperty Name="CustomField20" ColumnName="CustomField20" />
+                <ScalarProperty Name="CustomField21" ColumnName="CustomField21" />
+                <ScalarProperty Name="CustomField22" ColumnName="CustomField22" />
+                <ScalarProperty Name="CustomField23" ColumnName="CustomField23" />
+                <ScalarProperty Name="CustomField24" ColumnName="CustomField24" />
+                <ScalarProperty Name="CustomField25" ColumnName="CustomField25" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CREATE_NEW_DATABASE" FunctionName="DF_DefaultModel.Store.CREATE_NEW_DATABASE" />
+          <FunctionImportMapping FunctionImportName="CRM_CheckifUserExists" FunctionName="DF_DefaultModel.Store.CRM_CheckifUserExists" />
+          <FunctionImportMapping FunctionImportName="CRM_Getclients" FunctionName="DF_DefaultModel.Store.CRM_Getclients" />
+          <FunctionImportMapping FunctionImportName="CRM_GetLogin" FunctionName="DF_DefaultModel.Store.CRM_GetLogin" />
+          <FunctionImportMapping FunctionImportName="crm_GetOpportunityDetail" FunctionName="DF_DefaultModel.Store.crm_GetOpportunityDetail" />
+          <FunctionImportMapping FunctionImportName="CRM_InsertClientDetails" FunctionName="DF_DefaultModel.Store.CRM_InsertClientDetails" />
+          <FunctionImportMapping FunctionImportName="crm_InsertOpportunityDetail" FunctionName="DF_DefaultModel.Store.crm_InsertOpportunityDetail" />
+          <FunctionImportMapping FunctionImportName="CRM_SaveExtContactDetails" FunctionName="DF_DefaultModel.Store.CRM_SaveExtContactDetails" />
+          <FunctionImportMapping FunctionImportName="CRM_UpdateClientDetailsByClientId" FunctionName="DF_DefaultModel.Store.CRM_UpdateClientDetailsByClientId" />
+          <FunctionImportMapping FunctionImportName="crm_UpdateOpportunityDetail" FunctionName="DF_DefaultModel.Store.crm_UpdateOpportunityDetail" />
+          <FunctionImportMapping FunctionImportName="CRMDefault_InsertClientDetails" FunctionName="DF_DefaultModel.Store.CRMDefault_InsertClientDetails" />
+          <FunctionImportMapping FunctionImportName="DELETE_CLIENT" FunctionName="DF_DefaultModel.Store.DELETE_CLIENT" />
+          <FunctionImportMapping FunctionImportName="DELETE_ClientDB" FunctionName="DF_DefaultModel.Store.DELETE_ClientDB" />
+          <FunctionImportMapping FunctionImportName="DELETE_ClientDBNew" FunctionName="DF_DefaultModel.Store.DELETE_ClientDBNew" />
+          <FunctionImportMapping FunctionImportName="DF_CreateCompanyType" FunctionName="DF_DefaultModel.Store.DF_CreateCompanyType" />
+          <FunctionImportMapping FunctionImportName="DF_CreateDocument" FunctionName="DF_DefaultModel.Store.DF_CreateDocument" />
+          <FunctionImportMapping FunctionImportName="DF_CreateErrorLog" FunctionName="DF_DefaultModel.Store.DF_CreateErrorLog" />
+          <FunctionImportMapping FunctionImportName="DF_CreateFolder" FunctionName="DF_DefaultModel.Store.DF_CreateFolder" />
+          <FunctionImportMapping FunctionImportName="DF_CreatePublicDocuments" FunctionName="DF_DefaultModel.Store.DF_CreatePublicDocuments" />
+          <FunctionImportMapping FunctionImportName="DF_CreateSharedDocuments" FunctionName="DF_DefaultModel.Store.DF_CreateSharedDocuments" />
+          <FunctionImportMapping FunctionImportName="DF_CreateStatus" FunctionName="DF_DefaultModel.Store.DF_CreateStatus" />
+          <FunctionImportMapping FunctionImportName="DF_CreateUser" FunctionName="DF_DefaultModel.Store.DF_CreateUser" />
+          <FunctionImportMapping FunctionImportName="DF_CreateUserType" FunctionName="DF_DefaultModel.Store.DF_CreateUserType" />
+          <FunctionImportMapping FunctionImportName="DF_GetAllCompanyType" FunctionName="DF_DefaultModel.Store.DF_GetAllCompanyType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllCompanyType_Result">
+                <ScalarProperty Name="CompanyTypeId" ColumnName="CompanyTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllCompanyTypeById" FunctionName="DF_DefaultModel.Store.DF_GetAllCompanyTypeById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllCompanyTypeById_Result">
+                <ScalarProperty Name="CompanyTypeId" ColumnName="CompanyTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllDocument" FunctionName="DF_DefaultModel.Store.DF_GetAllDocument">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllDocument_Result">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllErrorLogs" FunctionName="DF_DefaultModel.Store.DF_GetAllErrorLogs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllErrorLogs_Result">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="Error_LineNo" ColumnName="Error_LineNo" />
+                <ScalarProperty Name="Procedure_Name" ColumnName="Procedure_Name" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllFolder" FunctionName="DF_DefaultModel.Store.DF_GetAllFolder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllFolder_Result">
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllPublicDocumets" FunctionName="DF_DefaultModel.Store.DF_GetAllPublicDocumets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllPublicDocumets_Result">
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllPublicDocumetsById" FunctionName="DF_DefaultModel.Store.DF_GetAllPublicDocumetsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllPublicDocumetsById_Result">
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllSharedDocuments" FunctionName="DF_DefaultModel.Store.DF_GetAllSharedDocuments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllSharedDocuments_Result">
+                <ScalarProperty Name="SharedId" ColumnName="SharedId" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SharedBy" ColumnName="SharedBy" />
+                <ScalarProperty Name="SharedOn" ColumnName="SharedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllStatus" FunctionName="DF_DefaultModel.Store.DF_GetAllStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllStatus_Result">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllUsers" FunctionName="DF_DefaultModel.Store.DF_GetAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllUsers_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedON" ColumnName="CreatedON" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllUserType" FunctionName="DF_DefaultModel.Store.DF_GetAllUserType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllUserType_Result">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetAllUserTypeById" FunctionName="DF_DefaultModel.Store.DF_GetAllUserTypeById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetAllUserTypeById_Result">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetDocumentById" FunctionName="DF_DefaultModel.Store.DF_GetDocumentById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetDocumentById_Result">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetFolderById" FunctionName="DF_DefaultModel.Store.DF_GetFolderById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetFolderById_Result">
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsFavourite" ColumnName="IsFavourite" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetStatusById" FunctionName="DF_DefaultModel.Store.DF_GetStatusById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetStatusById_Result">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_GetUsersDetailsById" FunctionName="DF_DefaultModel.Store.DF_GetUsersDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.DF_GetUsersDetailsById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedON" ColumnName="CreatedON" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DF_UpdateCompanyType" FunctionName="DF_DefaultModel.Store.DF_UpdateCompanyType" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateDocument" FunctionName="DF_DefaultModel.Store.DF_UpdateDocument" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateFolder" FunctionName="DF_DefaultModel.Store.DF_UpdateFolder" />
+          <FunctionImportMapping FunctionImportName="DF_UpdatePublicDocument" FunctionName="DF_DefaultModel.Store.DF_UpdatePublicDocument" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateStatus" FunctionName="DF_DefaultModel.Store.DF_UpdateStatus" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateUser" FunctionName="DF_DefaultModel.Store.DF_UpdateUser" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateUserType" FunctionName="DF_DefaultModel.Store.DF_UpdateUserType" />
+          <FunctionImportMapping FunctionImportName="GET_CLIENT_DETAILS" FunctionName="DF_DefaultModel.Store.GET_CLIENT_DETAILS" />
+          <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="DF_DefaultModel.Store.UserLogin" />
+          <FunctionImportMapping FunctionImportName="USP_CREATE_CLIENT" FunctionName="DF_DefaultModel.Store.USP_CREATE_CLIENT" />
+          <FunctionImportMapping FunctionImportName="USP_CREATE_CLIENT1" FunctionName="DF_DefaultModel.Store.USP_CREATE_CLIENT1" />
+          <FunctionImportMapping FunctionImportName="Usp_Custom_Manage_Master" FunctionName="DF_DefaultModel.Store.Usp_Custom_Manage_Master" />
+          <FunctionImportMapping FunctionImportName="Usp_Custom_Manage_Value_Master" FunctionName="DF_DefaultModel.Store.Usp_Custom_Manage_Value_Master">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DF_DefaultModel.Usp_Custom_Manage_Value_Master_Result">
+                <ScalarProperty Name="CValueId" ColumnName="CValueId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ModuleRecordId" ColumnName="ModuleRecordId" />
+                <ScalarProperty Name="ModuleRecordIdTmp" ColumnName="ModuleRecordIdTmp" />
+                <ScalarProperty Name="CustomField1" ColumnName="CustomField1" />
+                <ScalarProperty Name="CustomField2" ColumnName="CustomField2" />
+                <ScalarProperty Name="CustomField3" ColumnName="CustomField3" />
+                <ScalarProperty Name="CustomField4" ColumnName="CustomField4" />
+                <ScalarProperty Name="CustomField5" ColumnName="CustomField5" />
+                <ScalarProperty Name="CustomField6" ColumnName="CustomField6" />
+                <ScalarProperty Name="CustomField7" ColumnName="CustomField7" />
+                <ScalarProperty Name="CustomField8" ColumnName="CustomField8" />
+                <ScalarProperty Name="CustomField9" ColumnName="CustomField9" />
+                <ScalarProperty Name="CustomField10" ColumnName="CustomField10" />
+                <ScalarProperty Name="CustomField11" ColumnName="CustomField11" />
+                <ScalarProperty Name="CustomField12" ColumnName="CustomField12" />
+                <ScalarProperty Name="CustomField13" ColumnName="CustomField13" />
+                <ScalarProperty Name="CustomField14" ColumnName="CustomField14" />
+                <ScalarProperty Name="CustomField15" ColumnName="CustomField15" />
+                <ScalarProperty Name="CustomField16" ColumnName="CustomField16" />
+                <ScalarProperty Name="CustomField17" ColumnName="CustomField17" />
+                <ScalarProperty Name="CustomField18" ColumnName="CustomField18" />
+                <ScalarProperty Name="CustomField19" ColumnName="CustomField19" />
+                <ScalarProperty Name="CustomField20" ColumnName="CustomField20" />
+                <ScalarProperty Name="CustomField21" ColumnName="CustomField21" />
+                <ScalarProperty Name="CustomField22" ColumnName="CustomField22" />
+                <ScalarProperty Name="CustomField23" ColumnName="CustomField23" />
+                <ScalarProperty Name="CustomField24" ColumnName="CustomField24" />
+                <ScalarProperty Name="CustomField25" ColumnName="CustomField25" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_EXECUTE_SCRIPT" FunctionName="DF_DefaultModel.Store.USP_EXECUTE_SCRIPT" />
+          <FunctionImportMapping FunctionImportName="USP_GET_ACTIVE_CLIENTS" FunctionName="DF_DefaultModel.Store.USP_GET_ACTIVE_CLIENTS" />
+          <FunctionImportMapping FunctionImportName="USP_GET_ALL_Client" FunctionName="DF_DefaultModel.Store.USP_GET_ALL_Client" />
+          <FunctionImportMapping FunctionImportName="USP_GET_ClientDetail" FunctionName="DF_DefaultModel.Store.USP_GET_ClientDetail" />
+          <FunctionImportMapping FunctionImportName="USP_GET_DASHBOARD_DATA" FunctionName="DF_DefaultModel.Store.USP_GET_DASHBOARD_DATA" />
+          <FunctionImportMapping FunctionImportName="USP_GET_SITE_DETAILS_CLIENTID" FunctionName="DF_DefaultModel.Store.USP_GET_SITE_DETAILS_CLIENTID" />
+          <FunctionImportMapping FunctionImportName="USP_Validate_Client" FunctionName="DF_DefaultModel.Store.USP_Validate_Client" />
+          <FunctionImportMapping FunctionImportName="USP_VALIDATE_CLIENT_EXPIRY" FunctionName="DF_DefaultModel.Store.USP_VALIDATE_CLIENT_EXPIRY" />
+          <FunctionImportMapping FunctionImportName="USP_VALIDATE_CLIENT_EXPIRY_BY_TYPE" FunctionName="DF_DefaultModel.Store.USP_VALIDATE_CLIENT_EXPIRY_BY_TYPE" />
+          <FunctionImportMapping FunctionImportName="VALIDATE_CLIENT" FunctionName="DF_DefaultModel.Store.VALIDATE_CLIENT" />
+          <FunctionImportMapping FunctionImportName="VALIDATE_CLIENT_BY_TYPE" FunctionName="DF_DefaultModel.Store.VALIDATE_CLIENT_BY_TYPE" />
+          <FunctionImportMapping FunctionImportName="DF_DeleteUser" FunctionName="DF_DefaultModel.Store.DF_DeleteUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

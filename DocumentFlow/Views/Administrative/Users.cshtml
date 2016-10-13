@@ -1,104 +1,98 @@
-﻿@model IEnumerable<DocumentFlow.Models.User>
+﻿@model IEnumerable<DF.Business.Model.EntityFramework.User>
 
 @{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 <script src="~/Scripts/FooTable/jquery-2.1.1.js"></script>
 <script src="~/Scripts/FooTable/footable.js"></script>
 <script src="~/Scripts/FooTable/footable.filter.js"></script>
 <script src="~/Content/plugins/iCheck/icheck.min.js"></script>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 style="font-size:19px;
-margin-top:0px;
-text-align:right;
-font-family:FontAwesome;
-font-style:normal;
-font-weight:normal;">
-            <i class="fa fa-dashboard fa-8x"><small>Category > DisplayCategory</small></i>
-        </h1>
-    </div>
-</div>
 
-<div class="row">
-    @Html.ActionLink("Add", "CreateCategory", null, new { @class = "btn btn-success" })
-    @Html.ActionLink("Delete", null, null, new { @class = "btn btn-danger", @id = "btnDeleteCategory" })
-    <span class="btn btn-primary" style="float:right;">
-        <i class="fa fa-arrow-circle-o-left">
-            @Html.ActionLink("Back", "Dashboard", "CategoryDashboard", null, new { @class = "", style = "color:#fff;" })
-        </i>
-    </span>
-</div>
+<h2>Users</h2>
 
-<aside class="row">
-    <div class="col-xs-12">
-        <div class="mailbox row">
-            <div class="sm-col-6" style="padding:7px 5px 5px 5px;">
-                <input id="filter" type="text" placeholder="Search Grid" class="form-control pull-right" style="width:200px;" />
+<p>
+    @Html.ActionLink("Create New", "CreateUser", "Administrative")
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well-sm">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
+                    <li><a href="@Url.Action("Index","Administrative")">Administrative</a></li>
+                    <li class="active">Users</li>
+                </ol>
             </div>
-            <table id="tblSpecialization" style="text-align:center;" data-filter="#filter">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>UserName</th>
-                        <th>Email</th>
-                        <th>UserType</th>
-                        <th data-hide="phone">Gender</th>
-                        <th data-hide="tablet">CreatedOn</th>
-                        <th><input type="checkbox" id="check-all" /></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-
-                        <tr>
-                            <td>
-
-                                @*@Html.HiddenFor(model => @item.user)*@
-                                @Html.DisplayFor(modelItem => item.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EmailAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserTypeId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Gender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DOB)
-                            </td>
-                            <td style="text-align:center;width:30px;">
-                                <input type="checkbox" value="" data-val-1="@item.UserTypeId" id="btncheck">
-                            </td>
-
-                            </tr>
-                            }
-
-</tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5"><div class="pagination pagination-centered" style="float:right;"></div></td>
-                    </tr>
-                </tfoot>
-            </table>
         </div>
     </div>
-</aside>
+    <table id="tblUsers" style="text-align:center;" data-filter="#filter">
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Dob</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>User Type</th>
+                <th>Created On</th>
+                <th>Is Active</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserTypeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id },new { onClick="confirm('hi')"})
+                    </td>
+                </tr>
+            }
+        </tbody>
 
+        <tfoot>
+            <tr>
+                <td colspan="11"><div class="pagination pagination-centered" style="float:right;"></div></td>
+            </tr>
+        </tfoot>
 
-
-<script type="text/javascript">
+    </table>
+    <script type="text/javascript">
     $(function () {
 
-        $('#tblSpecialization').footable({ pageSize: 5 });
+        $('#tblUsers').footable({ pageSize: 5 });
 
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_minimal-blue',
@@ -129,162 +123,9 @@ font-weight:normal;">
             }
         });
     });
-</script>
+    </script>
+</div>
 
-
-@*<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="well-sm">
-                <ol class="breadcrumb">
-                    <li><a href="@Url.Action("Sample","Test")">Document Flow</a></li>
-                    <li><a href="@Url.Action("Index","Administrative")">Administrative</a></li>
-                    <li class="active">Users</li>   
-                </ol>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="box-primary">
-            <div class="table table-bordered">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="label pull-right">
-                            <h5><a href="@Url.Action("CreateUser","Administrative")">Create User</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="table-responsive">
-            <table class="table  table-bordered">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UserName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Gender)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DOB)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EmailAddress)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.State)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Country)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Zip)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.About)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UserTypeId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedBy)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ModifiedOn)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsActive)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsLocked)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DOB)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EmailAddress)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.State)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Country)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Zip)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.About)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserTypeId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreatedOn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreatedBy)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ModifiedOn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsActive)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsLocked)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-        
-    </div>
-
-
-
-</div>*@
 
 
 

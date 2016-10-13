@@ -5,12 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
-using DocumentFlow.Models;
+using DF.Business.Repository;
+using DF.Business.Interfaces;
+using DF.Business.Model.EntityFramework;
 
 namespace DocumentFlow.Controllers
 {
     public class AdministrativeController : Controller
     {
+        private readonly IUser _userRepository = null;
+        private readonly IErrologs _errorRepository = null;
+        //constructor
+        public AdministrativeController()
+        {
+            this._userRepository = new UserRepo();
+            this._errorRepository = new ErroLogsRepo();
+        }
         // GET: Administrative
         public ActionResult Index()
         {
@@ -19,51 +29,23 @@ namespace DocumentFlow.Controllers
         [HttpGet]
         public ActionResult Users()
         {
-            //write the logic to display he data of users
-            string cs = @"Data Source=CHINTALAS\SQLEXPRESS;Initial Catalog=DF_Default;Integrated Security=True";
-            List<User> userlst = new List<User>();
             try
             {
-                using (SqlConnection con = new SqlConnection(cs))
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM [User]", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        User singleuser = new User();
-                        singleuser.id = Convert.ToInt32(dr["id"]);
-                        singleuser.UserName = dr["UserName"].ToString();
-                        //singleuser.Password = dr["Passord"].ToString();
-                        singleuser.FirstName = dr["FirstName"].ToString();
-                        singleuser.LastName = dr["LastName"].ToString();
-                        singleuser.Gender = dr["Gender"].ToString();
-                        singleuser.DOB = Convert.ToDateTime(dr["DOB"]).Date;
-                        singleuser.EmailAddress = dr["EmailAddress"].ToString();
-                        singleuser.Address = dr["Address"].ToString();
-                        singleuser.City = dr["City"].ToString();
-                        singleuser.State = dr["State"].ToString();
-                        singleuser.Country = dr["Country"].ToString();
-                        //singleuser.Zip = Convert.ToInt32(dr["Zip"]);
-                        singleuser.About = dr["About"].ToString();
-                        singleuser.UserTypeId = Convert.ToInt32(dr["UserTypeId"]);
-                        singleuser.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]).Date;
-                        singleuser.CreatedBy = Convert.ToInt32(dr["CreatedBy"]);
-                        //singleuser.ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"]).Date;
-                        //singleuser.ModifiedBy = Convert.ToInt32(dr["ModofiedBy"]);
-                        //singleuser.IsActive = Convert.ToInt32(dr["IsActive"]);
-                        //singleuser.IsLocked = Convert.ToInt32(dr["IsLocked"]);
-                        userlst.Add(singleuser);
-                    }
-                    
-                }
+                List<User> lstUsers = new List<User>();
+                lstUsers = _userRepository.getAllUsers();
+                return View(lstUsers);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                ErrorLog errLog = new ErrorLog();
+                errLog.ErrorMessage = ex.Message;
+                errLog.Procedure_Name = "Administrative Controller";
+                errLog.Method = "Users";
+                errLog.CreatedOn = System.DateTime.Now;
+                _errorRepository.inserterorlogs(errLog);
+                return null;
             }
-            var userdata = userlst;
-            return View(userdata);
+
         }
         [HttpGet]
         public ActionResult Roles()
@@ -93,20 +75,19 @@ namespace DocumentFlow.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            string cs = @"Data Source=CHINTALAS\SQLEXPRESS;Initial Catalog=DF_Default;Integrated Security=True";
             try
             {
-                using (SqlConnection con = new SqlConnection(cs))
-                {
-                    SqlCommand cmd = new SqlCommand("delete from [User] where id="+id, con);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                _userRepository.deleteUser(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                ErrorLog errLog = new ErrorLog();
+                errLog.ErrorMessage = ex.Message;
+                errLog.Procedure_Name = "Administrative Controller";
+                errLog.Method = "Users";
+                errLog.CreatedOn = System.DateTime.Now;
+                _errorRepository.inserterorlogs(errLog);
+                return null;
             }
             return RedirectToAction("Users");
         }
@@ -114,7 +95,25 @@ namespace DocumentFlow.Controllers
         {
             return View();
         }
-     
+        [HttpPost]
+        public ActionResult InsertUser(User user)
+        {
+            try
+            {
+                _userRepository.createUser(user);
+            }
+            catch (Exception ex)
+            {
+                ErrorLog errLog = new ErrorLog();
+                errLog.ErrorMessage = ex.Message;
+                errLog.Procedure_Name = "Administrative Controller";
+                errLog.Method = "Users";
+                errLog.CreatedOn = System.DateTime.Now;
+                _errorRepository.inserterorlogs(errLog);
+                return null;
+            }
+            return RedirectToAction("Users");
+        }
         //public ActionResult CreateUserModel()
         //{
         //    return View();
