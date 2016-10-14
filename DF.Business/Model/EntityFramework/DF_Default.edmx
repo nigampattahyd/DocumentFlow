@@ -203,6 +203,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Property Name="Description" Type="varchar" MaxLength="200" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <Function Name="CREATE_NEW_DATABASE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NEW_DATABASE_NAME" Type="varchar" Mode="In" />
@@ -423,6 +424,9 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
         </Function>
         <Function Name="DF_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DF_DeleteUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
         </Function>
         <Function Name="DF_GetAllCompanyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DF_GetAllCompanyTypeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -860,6 +864,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Custom_Value_Master">
           <Key>
@@ -1363,6 +1368,9 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <FunctionImport Name="DF_DeleteUser">
           <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DF_DeleteUserType">
+          <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DF_GetAllCompanyType_Result">
           <Property Type="Int32" Name="CompanyTypeId" Nullable="false" />
@@ -1745,6 +1753,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="DF_DefaultModel.UserType">
               <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
                 <ScalarProperty Name="UserType1" ColumnName="UserType" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -2126,6 +2135,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <FunctionImportMapping FunctionImportName="VALIDATE_CLIENT" FunctionName="DF_DefaultModel.Store.VALIDATE_CLIENT" />
           <FunctionImportMapping FunctionImportName="VALIDATE_CLIENT_BY_TYPE" FunctionName="DF_DefaultModel.Store.VALIDATE_CLIENT_BY_TYPE" />
           <FunctionImportMapping FunctionImportName="DF_DeleteUser" FunctionName="DF_DefaultModel.Store.DF_DeleteUser" />
+          <FunctionImportMapping FunctionImportName="DF_DeleteUserType" FunctionName="DF_DefaultModel.Store.DF_DeleteUserType" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

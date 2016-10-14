@@ -1445,6 +1445,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Administrative\Users.cshtml" />
     <Content Include="Views\Administrative\CreateUser.cshtml" />
+    <Content Include="Views\Administrative\GetUserType.cshtml" />
+    <Content Include="Views\Administrative\UserType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

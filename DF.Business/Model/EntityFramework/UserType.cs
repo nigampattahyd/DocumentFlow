@@ -19,5 +19,6 @@ namespace DF.Business.Model.EntityFramework
         public string Description { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

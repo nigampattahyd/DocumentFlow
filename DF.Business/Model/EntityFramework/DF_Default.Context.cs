@@ -1686,5 +1686,14 @@ namespace DF.Business.Model.EntityFramework
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DF_DeleteUser", userIdParameter);
         }
+    
+        public virtual int DF_DeleteUserType(Nullable<int> userTypeId)
+        {
+            var userTypeIdParameter = userTypeId.HasValue ?
+                new ObjectParameter("UserTypeId", userTypeId) :
+                new ObjectParameter("UserTypeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DF_DeleteUserType", userTypeIdParameter);
+        }
     }
 }

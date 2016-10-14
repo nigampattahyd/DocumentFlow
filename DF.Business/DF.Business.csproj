@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IErrologs.cs" />
     <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Interfaces\IUsertype.cs" />
     <Compile Include="Model\EntityFramework\CompanyType.cs">
       <DependentUpon>DF_Default.tt</DependentUpon>
     </Compile>
@@ -156,6 +157,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ErroLogsRepo.cs" />
     <Compile Include="Repository\UserRepo.cs" />
+    <Compile Include="Repository\UserTypeRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\ViewModels\" />

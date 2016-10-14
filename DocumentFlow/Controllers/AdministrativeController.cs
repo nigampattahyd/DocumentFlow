@@ -15,11 +15,13 @@ namespace DocumentFlow.Controllers
     {
         private readonly IUser _userRepository = null;
         private readonly IErrologs _errorRepository = null;
+        private readonly IUsertype _usertypeRepository = null;
         //constructor
         public AdministrativeController()
         {
             this._userRepository = new UserRepo();
             this._errorRepository = new ErroLogsRepo();
+            this._usertypeRepository = new UserTypeRepo();
         }
         // GET: Administrative
         public ActionResult Index()
@@ -48,9 +50,10 @@ namespace DocumentFlow.Controllers
 
         }
         [HttpGet]
-        public ActionResult Roles()
+        public ActionResult UserType()
         {
-            return View();
+            List<UserType> usertypelist = _usertypeRepository.GetAllUserTypes();
+            return View(usertypelist);
         }
         [HttpGet]
         public ActionResult DashboardSetUp()
@@ -93,6 +96,15 @@ namespace DocumentFlow.Controllers
         }
         public ActionResult CreateRole()
         {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return View();
         }
         [HttpPost]

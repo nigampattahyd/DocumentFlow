@@ -84,7 +84,7 @@ namespace DF.Business.Repository
                     ModifiedOn = user.ModifiedOn,
                     ModifiedBy = user.ModifiedBy,
                     IsActive = user.IsActive,
-                    IsLocked = user.IsLocked,
+                    IsLocked = user.IsLocked
                 }).ToList();
             }
             catch (Exception)
