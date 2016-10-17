@@ -1441,12 +1441,12 @@
     <Content Include="Views\Administrative\Tools.cshtml" />
     <Content Include="Views\Administrative\Index.cshtml" />
     <Content Include="Views\Administrative\CreateUserModel.cshtml" />
-    <Content Include="Views\Administrative\CreateRole.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Administrative\Users.cshtml" />
     <Content Include="Views\Administrative\CreateUser.cshtml" />
     <Content Include="Views\Administrative\GetUserType.cshtml" />
     <Content Include="Views\Administrative\UserType.cshtml" />
+    <Content Include="Views\Administrative\CreateRole.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

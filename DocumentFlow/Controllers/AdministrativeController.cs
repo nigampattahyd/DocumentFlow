@@ -96,16 +96,21 @@ namespace DocumentFlow.Controllers
         }
         public ActionResult CreateRole()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult InsertUserType(UserType usertype)
+        {
             try
             {
-
+                _usertypeRepository.CreateUserType(usertype);
             }
             catch (Exception)
             {
 
                 throw;
             }
-            return View();
+            return RedirectToAction("UserType");
         }
         [HttpPost]
         public ActionResult InsertUser(User user)
