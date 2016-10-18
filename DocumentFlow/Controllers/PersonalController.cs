@@ -53,5 +53,15 @@ namespace DocumentFlow.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult UserHomePage()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult SAmpleDesign()
+        {
+            return View();
+        }
     }
 }
