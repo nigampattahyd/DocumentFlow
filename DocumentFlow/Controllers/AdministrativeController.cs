@@ -24,6 +24,7 @@ namespace DocumentFlow.Controllers
             this._usertypeRepository = new UserTypeRepo();
         }
         // GET: Administrative
+        //users
         public ActionResult Index()
         {
             return View();
@@ -48,12 +49,6 @@ namespace DocumentFlow.Controllers
                 return null;
             }
 
-        }
-        [HttpGet]
-        public ActionResult UserType()
-        {
-            List<UserType> usertypelist = _usertypeRepository.GetAllUserTypes();
-            return View(usertypelist);
         }
         [HttpGet]
         public ActionResult DashboardSetUp()
@@ -94,6 +89,26 @@ namespace DocumentFlow.Controllers
             }
             return RedirectToAction("Users");
         }
+        [HttpPost]
+        public ActionResult InsertUser(User user)
+        {
+            try
+            {
+                _userRepository.createUser(user);
+            }
+            catch (Exception ex)
+            {
+                ErrorLog errLog = new ErrorLog();
+                errLog.ErrorMessage = ex.Message;
+                errLog.Procedure_Name = "Administrative Controller";
+                errLog.Method = "Users";
+                errLog.CreatedOn = System.DateTime.Now;
+                _errorRepository.inserterorlogs(errLog);
+                return null;
+            }
+            return RedirectToAction("Users");
+        }
+        //uertype
         public ActionResult CreateRole()
         {
             return View();
@@ -126,28 +141,40 @@ namespace DocumentFlow.Controllers
             }
             return RedirectToAction("UserType");
         }
+        [HttpGet]
+        public ActionResult EditUserType(int id)
+        {
+            UserType usertyperetreived = new UserType();
+            try
+            {
+                usertyperetreived = _usertypeRepository.GetUserTypeById(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return View(usertyperetreived);
+        }
         [HttpPost]
-        public ActionResult InsertUser(User user)
+        public ActionResult SaveEditedUserType(UserType usertype)
         {
             try
             {
-                _userRepository.createUser(user);
+                _usertypeRepository.UpdateUserType(usertype);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ErrorLog errLog = new ErrorLog();
-                errLog.ErrorMessage = ex.Message;
-                errLog.Procedure_Name = "Administrative Controller";
-                errLog.Method = "Users";
-                errLog.CreatedOn = System.DateTime.Now;
-                _errorRepository.inserterorlogs(errLog);
-                return null;
+
+                throw;
             }
-            return RedirectToAction("Users");
+            return RedirectToAction("UserType");
         }
-        //public ActionResult CreateUserModel()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult UserType()
+        {
+            List<UserType> usertypelist = _usertypeRepository.GetAllUserTypes();
+            return View(usertypelist);
+        }
     }
 }

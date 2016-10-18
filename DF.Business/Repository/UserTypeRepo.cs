@@ -77,9 +77,47 @@ namespace DF.Business.Repository
             }
         }
 
+        public UserType GetUserTypeById(int id)
+        {
+            var dfentities = new DF_DefaultEntities();
+            UserType usertype = new UserType();
+            try
+            {
+               List<DF_GetAllUserTypeById_Result> usertyperetreived =  dfentities.DF_GetAllUserTypeById(id).ToList();
+                foreach (var item in usertyperetreived)
+                {
+                    usertype.UserTypeId = item.UserTypeId;
+                    usertype.UserType1 = item.UserType;
+                    usertype.Description = item.Description;
+                    usertype.CreatedOn = item.CreatedOn;
+                    usertype.ModifiedOn = item.ModifiedOn;
+                    
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return usertype;
+        }
+
         public bool UpdateUserType(UserType usertype)
         {
-            throw new NotImplementedException();
+            var dfEntities = new DF_DefaultEntities();
+            bool updated = false;
+            try
+            {
+                dfEntities.DF_UpdateUserType(usertype.UserTypeId, usertype.UserType1, usertype.Description);
+                updated = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return updated;
         }
     }
 }
