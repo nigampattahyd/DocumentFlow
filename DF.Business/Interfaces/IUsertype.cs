@@ -12,5 +12,6 @@ namespace DF.Business.Interfaces
         bool CreateUserType(UserType usertype);
         List<UserType> GetAllUserTypes();
         bool UpdateUserType(UserType usertype);
+        bool DeleteUserType(int id);
     }
 }

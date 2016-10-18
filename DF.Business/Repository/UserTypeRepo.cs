@@ -37,6 +37,22 @@ namespace DF.Business.Repository
             return created;
         }
 
+        public bool DeleteUserType(int id)
+        {
+            var dfEntities = new DF_DefaultEntities();
+            bool deleted = false;
+            try
+            {
+                dfEntities.DF_DeleteUserType(id);
+                deleted = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+            return deleted;
+        }
+
         public List<UserType> GetAllUserTypes()
         {
             var dfEntities = new DF_DefaultEntities();

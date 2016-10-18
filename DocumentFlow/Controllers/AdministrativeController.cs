@@ -76,7 +76,7 @@ namespace DocumentFlow.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteUser(int id)
         {
             try
             {
@@ -104,6 +104,20 @@ namespace DocumentFlow.Controllers
             try
             {
                 _usertypeRepository.CreateUserType(usertype);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return RedirectToAction("UserType");
+        }
+        [HttpGet]
+        public ActionResult DeleteUserType(int id)
+        {
+            try
+            {
+                _usertypeRepository.DeleteUserType(id);
             }
             catch (Exception)
             {
