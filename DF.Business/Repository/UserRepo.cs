@@ -17,7 +17,7 @@ namespace DF.Business.Repository
             bool isCreated = false;
             try
             {
-                var result = dfEntities.DF_CreateUser(user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB, user.EmailAddress, user.Address, user.City, user.State, user.Country, user.Zip, user.ProfilePic, user.About, user.UserTypeId, user.CreatedBy);
+                var result = dfEntities.DF_CreateUser(user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB,user.Skills, user.EmailAddress, user.Address, user.City, user.State, user.Country, user.Zip, user.ProfilePic, user.About, user.UserTypeId, user.CreatedBy);
                 if (result > 0)
                 {
                     isCreated = true;
@@ -107,8 +107,12 @@ namespace DF.Business.Repository
                 var result = dfEntities.DF_GetUsersDetailsById(userId).ToList();
                 if (result != null && result.Count > 0)
                 {
+                    user.Id = userId;
                     user.UserName = result[0].UserName;
                     user.FirstName = result[0].FirstName;
+                    user.LastName = result[0].LastName;
+                    user.Password = result[0].Password;
+                    user.ProfilePic = result[0].ProfilePic;
                     user.Gender = result[0].Gender;
                     user.DOB = result[0].DOB;
                     user.EmailAddress = result[0].EmailAddress;
@@ -138,7 +142,18 @@ namespace DF.Business.Repository
 
         public bool updateUser(User user)
         {
-            throw new NotImplementedException();
+            var dfEntities = new DF_DefaultEntities();
+            bool inserted = false;
+            try
+            {
+                dfEntities.DF_UpdateUser(Convert.ToInt32(user.Id), user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB, user.EmailAddress, user.Address, user.City, user.State,user.State, user.Zip, user.About,1,Convert.ToInt32( user.Id));
+                inserted = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return inserted;
         }
     }
 }

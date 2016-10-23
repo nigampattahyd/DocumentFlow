@@ -178,6 +178,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Gender" Type="varchar" MaxLength="10" />
           <Property Name="DOB" Type="datetime" />
+          <Property Name="Skills" Type="varchar(max)" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="8000" />
           <Property Name="City" Type="varchar" MaxLength="50" />
@@ -407,6 +408,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Parameter Name="LastName" Type="varchar" Mode="In" />
           <Parameter Name="Gender" Type="char" Mode="In" />
           <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Skills" Type="varchar(max)" Mode="In" />
           <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
           <Parameter Name="Address" Type="varchar" Mode="In" />
           <Parameter Name="City" Type="varchar" Mode="In" />
@@ -497,6 +499,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Parameter Name="IsActive" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DF_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="FirstName" Type="varchar" Mode="In" />
@@ -509,7 +512,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Parameter Name="State" Type="varchar" Mode="In" />
           <Parameter Name="Country" Type="varchar" Mode="In" />
           <Parameter Name="Zip" Type="varchar" Mode="In" />
-          <Parameter Name="ProfilePic" Type="image" Mode="In" />
           <Parameter Name="About" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="UserTypeId" Type="int" Mode="In" />
           <Parameter Name="ModifiedBy" Type="int" Mode="In" />
@@ -828,33 +830,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Int64" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserName" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Precision="3" />
-          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProfilePic" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsLocked" Type="Boolean" />
-        </EntityType>
         <EntityType Name="UserType">
           <Key>
             <PropertyRef Name="UserTypeId" />
@@ -916,7 +891,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <EntitySet Name="PublicDocuments" EntityType="Self.PublicDocument" />
           <EntitySet Name="SharedDocumnets" EntityType="Self.SharedDocumnet" />
           <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserTypes" EntityType="Self.UserType" />
           <EntitySet Name="Custom_Value_Master" EntityType="Self.Custom_Value_Master" />
           <FunctionImport Name="CREATE_NEW_DATABASE">
@@ -1114,24 +1088,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
             <Parameter Name="Status" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="DF_CreateUser">
-            <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="Password" Mode="In" Type="String" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="Gender" Mode="In" Type="String" />
-            <Parameter Name="DOB" Mode="In" Type="DateTime" />
-            <Parameter Name="EmailAddress" Mode="In" Type="String" />
-            <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="City" Mode="In" Type="String" />
-            <Parameter Name="State" Mode="In" Type="String" />
-            <Parameter Name="Country" Mode="In" Type="String" />
-            <Parameter Name="Zip" Mode="In" Type="String" />
-            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
-            <Parameter Name="About" Mode="In" Type="String" />
-            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
-            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="DF_CreateUserType">
             <Parameter Name="UserType" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
@@ -1205,6 +1161,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
             <Parameter Name="IsActive" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="DF_UpdateUser">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -1217,7 +1174,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
             <Parameter Name="State" Mode="In" Type="String" />
             <Parameter Name="Country" Mode="In" Type="String" />
             <Parameter Name="Zip" Mode="In" Type="String" />
-            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
             <Parameter Name="About" Mode="In" Type="String" />
             <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
             <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
@@ -1370,6 +1326,26 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           </FunctionImport>
           <FunctionImport Name="DF_DeleteUserType">
           <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Users" EntityType="DF_DefaultModel.User" />
+          <FunctionImport Name="DF_CreateUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Skills" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
+            <Parameter Name="About" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DF_GetAllCompanyType_Result">
@@ -1592,6 +1568,34 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
           <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
         </ComplexType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfilePic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsLocked" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1722,34 +1726,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DF_DefaultModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
-                <ScalarProperty Name="About" ColumnName="About" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="DF_DefaultModel.UserType">
               <MappingFragment StoreEntitySet="UserType">
@@ -1821,7 +1797,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <FunctionImportMapping FunctionImportName="DF_CreatePublicDocuments" FunctionName="DF_DefaultModel.Store.DF_CreatePublicDocuments" />
           <FunctionImportMapping FunctionImportName="DF_CreateSharedDocuments" FunctionName="DF_DefaultModel.Store.DF_CreateSharedDocuments" />
           <FunctionImportMapping FunctionImportName="DF_CreateStatus" FunctionName="DF_DefaultModel.Store.DF_CreateStatus" />
-          <FunctionImportMapping FunctionImportName="DF_CreateUser" FunctionName="DF_DefaultModel.Store.DF_CreateUser" />
           <FunctionImportMapping FunctionImportName="DF_CreateUserType" FunctionName="DF_DefaultModel.Store.DF_CreateUserType" />
           <FunctionImportMapping FunctionImportName="DF_GetAllCompanyType" FunctionName="DF_DefaultModel.Store.DF_GetAllCompanyType">
             <ResultMapping>
@@ -2136,6 +2111,36 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <FunctionImportMapping FunctionImportName="VALIDATE_CLIENT_BY_TYPE" FunctionName="DF_DefaultModel.Store.VALIDATE_CLIENT_BY_TYPE" />
           <FunctionImportMapping FunctionImportName="DF_DeleteUser" FunctionName="DF_DefaultModel.Store.DF_DeleteUser" />
           <FunctionImportMapping FunctionImportName="DF_DeleteUserType" FunctionName="DF_DefaultModel.Store.DF_DeleteUserType" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DF_DefaultModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DF_CreateUser" FunctionName="DF_DefaultModel.Store.DF_CreateUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

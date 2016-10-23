@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DF.Business.Interfaces;
+using DF.Business.Model.EntityFramework;
+using DF.Business.Repository;
 
 namespace DocumentFlow.Controllers
 {
     public class PersonalController : Controller
     {
+        private readonly IUser _userRepository = null;
+        private readonly IErrologs _errorRepository = null;
+        private readonly IUsertype _usertypeRepository = null;
+        //constructor
+        public PersonalController()
+        {
+            this._userRepository = new UserRepo();
+            this._errorRepository = new ErroLogsRepo();
+            this._usertypeRepository = new UserTypeRepo();
+        }
         // GET: Personal
         public ActionResult Index()
         {
@@ -61,7 +74,14 @@ namespace DocumentFlow.Controllers
         [HttpGet]
         public ActionResult SAmpleDesign()
         {
-            return View();
+            User loggedinUser = _userRepository.getUserDetailsById(10018);
+            return View(loggedinUser);
+        }
+        [HttpPost]
+        public ActionResult UpdateUser(User user)
+        {
+            _userRepository.updateUser(user);
+            return RedirectToAction("SAmpleDesign");
         }
     }
 }

@@ -22,6 +22,7 @@ namespace DF.Business.Model.ExtendedModels
         public string LastName { get; set; }
         public string Gender { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
+        public string Skills { get; set; }
         public string EmailAddress { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
