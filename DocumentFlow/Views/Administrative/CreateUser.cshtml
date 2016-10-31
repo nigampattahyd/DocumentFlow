@@ -7,143 +7,130 @@
 
 <h2>CreateUser</h2>
 
-@using (Html.BeginForm("InsertUser","Administrative",FormMethod.Post)) 
-{    
+@using (Html.BeginForm("InsertUser", "Administrative", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" , @placeholder="Enter user name "} })
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter user name " } })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter First Name" } })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Last Name" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Gender" } })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Date Of Birth" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter ZYOur Email Addresss" } })
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter ZYOur Email Addresss" } })
+            </div>
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Address" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your City" } })
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your City" } })
+            </div>
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Your State" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Country" } })
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Country" } })
+            </div>
+            @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Zip" } })
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.Label("Profile Pic", new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+            @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.TextAreaFor(model => model.About, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter About you" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserTypeId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Select your usertype" } })
-            </div>
-        </div>
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.UserTypeId, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.UserTypeId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Select your usertype" } })
+            </div>
+            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the created date" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the created by" } })
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the created by" } })
+            </div>
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.ModifiedOn, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter modified date" } })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifiedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter modified by" } })
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.ModifiedBy, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter modified by" } })
+            </div>
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.IsLocked, htmlAttributes: new { @class = "control-label col-md-2" })

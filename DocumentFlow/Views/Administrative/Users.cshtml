@@ -39,6 +39,7 @@
                 <th>User Type</th>
                 <th>Created On</th>
                 <th>Is Active</th>
+                <th>ProfilePic</th>
                 <th>Options</th>
             </tr>
         </thead>
@@ -69,6 +70,14 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @{ 
+
+                            var base64 = Convert.ToBase64String(item.ProfilePic);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img src=@imgSrc alt="profilePic" height="40" width="40" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActive)

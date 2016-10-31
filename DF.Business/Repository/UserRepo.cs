@@ -17,7 +17,11 @@ namespace DF.Business.Repository
             bool isCreated = false;
             try
             {
-                var result = dfEntities.DF_CreateUser(user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB,user.Skills, user.EmailAddress, user.Address, user.City, user.State, user.Country, user.Zip, user.ProfilePic, user.About, user.UserTypeId, user.CreatedBy);
+                var DisplayPic = user.ProfilePic;
+                dfEntities.Users.Add(user);
+                dfEntities.SaveChanges();
+                var result = 0;
+                //var result = dfEntities.DF_CreateUser(user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB,user.Skills, user.EmailAddress, user.Address, user.City, user.State, user.Country, user.Zip, user.ProfilePic, user.About, user.UserTypeId, user.CreatedBy);
                 if (result > 0)
                 {
                     isCreated = true;
