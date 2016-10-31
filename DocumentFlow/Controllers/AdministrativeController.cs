@@ -36,36 +36,8 @@ namespace DocumentFlow.Controllers
         {
             try
             {
-                //List<User> lstUsers = new List<User>();
                 List<User> lstUsersretreived = new List<User>();
                 lstUsersretreived = _userRepository.getAllUsers();
-                //foreach (var item in lstUsersretreived)
-                //{
-                //    User userobj = new User();
-                //    userobj.Id = item.Id;
-                //    userobj.UserName = item.UserName;
-                //    userobj.FirstName = item.FirstName;
-                //    userobj.LastName = item.LastName;
-                //    userobj.Gender = item.Gender;
-                //    userobj.DOB = item.DOB;
-                //    userobj.Skills = item.Skills;
-                //    userobj.EmailAddress = item.EmailAddress;
-                //    userobj.Address = item.Address;
-                //    userobj.City = item.City;
-                //    userobj.State = item.State;
-                //    userobj.Country = item.Country;
-                //    userobj.Zip = item.Zip;
-                //    userobj.ProfilePic = item.ProfilePic;
-                //    userobj.About = item.About;
-                //    userobj.UserTypeId = item.UserTypeId;
-                //    userobj.CreatedOn = item.CreatedOn;
-                //    userobj.CreatedBy = item.CreatedBy;
-                //    userobj.ModifiedOn = item.ModifiedOn;
-                //    userobj.ModifiedBy = item.ModifiedBy;
-                //    userobj.IsActive = item.IsActive;
-                //    userobj.IsLocked = item.IsLocked;
-                //    lstUsers.Add(userobj);
-                //}
                 return View(lstUsersretreived);
             }
             catch (Exception ex)
@@ -78,7 +50,6 @@ namespace DocumentFlow.Controllers
                 _errorRepository.inserterorlogs(errLog);
                 return null;
             }
-
         }
         [HttpGet]
         public ActionResult DashboardSetUp()
