@@ -511,6 +511,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <Parameter Name="City" Type="varchar" Mode="In" />
           <Parameter Name="State" Type="varchar" Mode="In" />
           <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="ProfilePic" Type="image" Mode="In" />
           <Parameter Name="Zip" Type="varchar" Mode="In" />
           <Parameter Name="About" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="UserTypeId" Type="int" Mode="In" />
@@ -1347,6 +1348,25 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
             <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
             <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DF_UpdateUser1">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="ProfilePic" Mode="In" Type="Binary" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="About" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DF_GetAllCompanyType_Result">
           <Property Type="Int32" Name="CompanyTypeId" Nullable="false" />
@@ -2053,7 +2073,6 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
           <FunctionImportMapping FunctionImportName="DF_UpdateFolder" FunctionName="DF_DefaultModel.Store.DF_UpdateFolder" />
           <FunctionImportMapping FunctionImportName="DF_UpdatePublicDocument" FunctionName="DF_DefaultModel.Store.DF_UpdatePublicDocument" />
           <FunctionImportMapping FunctionImportName="DF_UpdateStatus" FunctionName="DF_DefaultModel.Store.DF_UpdateStatus" />
-          <FunctionImportMapping FunctionImportName="DF_UpdateUser" FunctionName="DF_DefaultModel.Store.DF_UpdateUser" />
           <FunctionImportMapping FunctionImportName="DF_UpdateUserType" FunctionName="DF_DefaultModel.Store.DF_UpdateUserType" />
           <FunctionImportMapping FunctionImportName="GET_CLIENT_DETAILS" FunctionName="DF_DefaultModel.Store.GET_CLIENT_DETAILS" />
           <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="DF_DefaultModel.Store.UserLogin" />
@@ -2141,6 +2160,7 @@ warning 6002: The table/view 'DF_Default.dbo.Custom_Value_Master' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DF_CreateUser" FunctionName="DF_DefaultModel.Store.DF_CreateUser" />
+          <FunctionImportMapping FunctionImportName="DF_UpdateUser1" FunctionName="DF_DefaultModel.Store.DF_UpdateUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

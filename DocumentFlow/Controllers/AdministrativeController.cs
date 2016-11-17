@@ -30,7 +30,6 @@ namespace DocumentFlow.Controllers
         {
             return View();
         }
-        
         [HttpGet]
         public ActionResult Users()
         {
@@ -50,6 +49,34 @@ namespace DocumentFlow.Controllers
                 _errorRepository.inserterorlogs(errLog);
                 return null;
             }
+        }
+        [HttpGet]
+        public ActionResult EditUsers(int id)
+        {
+            User userretreived = new User();
+            try
+            {
+                userretreived = _userRepository.getUserDetailsById(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return View(userretreived);
+        }
+        [HttpPost]
+        public ActionResult UpdateUser(User userupdated)
+        {
+            try
+            {
+                _userRepository.updateUser(userupdated);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction("Users");
         }
         [HttpGet]
         public ActionResult DashboardSetUp()

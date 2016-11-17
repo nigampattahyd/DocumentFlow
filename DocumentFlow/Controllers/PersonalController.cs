@@ -74,13 +74,35 @@ namespace DocumentFlow.Controllers
         [HttpGet]
         public ActionResult SAmpleDesign()
         {
-            User loggedinUser = _userRepository.getUserDetailsById(10026);
+            User loggedinUser = _userRepository.getUserDetailsById(10031);
             return View(loggedinUser);
         }
         [HttpPost]
-        public ActionResult UpdateUser(User user)
+        public ActionResult UpdateUser(User user, HttpPostedFileBase upload)
         {
-            _userRepository.updateUser(user);
+            try
+            {
+                if (upload != null && upload.ContentLength > 0)
+                {
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        user.ProfilePic = reader.ReadBytes(upload.ContentLength);
+                    }
+
+                }
+                _userRepository.updateUser(user);
+            }
+            catch (Exception ex)
+            {
+                ErrorLog errLog = new ErrorLog();
+                errLog.ErrorMessage = ex.Message;
+                errLog.Procedure_Name = "Personal Controller";
+                errLog.Method = "Users";
+                errLog.CreatedOn = System.DateTime.Now;
+                _errorRepository.inserterorlogs(errLog);
+                return null;
+            }
             return RedirectToAction("SAmpleDesign");
         }
     }

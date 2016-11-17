@@ -1699,5 +1699,78 @@ namespace DF.Business.Model.EntityFramework
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DF_CreateUser", userNameParameter, passwordParameter, firstNameParameter, lastNameParameter, genderParameter, dOBParameter, skillsParameter, emailAddressParameter, addressParameter, cityParameter, stateParameter, countryParameter, zipParameter, profilePicParameter, aboutParameter, userTypeIdParameter, createdByParameter);
         }
+    
+        public virtual int DF_UpdateUser1(Nullable<int> userId, string userName, string password, string firstName, string lastName, string gender, Nullable<System.DateTime> dOB, string emailAddress, string address, string city, string state, string country, byte[] profilePic, string zip, string about, Nullable<int> userTypeId, Nullable<int> modifiedBy)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var dOBParameter = dOB.HasValue ?
+                new ObjectParameter("DOB", dOB) :
+                new ObjectParameter("DOB", typeof(System.DateTime));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("Country", country) :
+                new ObjectParameter("Country", typeof(string));
+    
+            var profilePicParameter = profilePic != null ?
+                new ObjectParameter("ProfilePic", profilePic) :
+                new ObjectParameter("ProfilePic", typeof(byte[]));
+    
+            var zipParameter = zip != null ?
+                new ObjectParameter("Zip", zip) :
+                new ObjectParameter("Zip", typeof(string));
+    
+            var aboutParameter = about != null ?
+                new ObjectParameter("About", about) :
+                new ObjectParameter("About", typeof(string));
+    
+            var userTypeIdParameter = userTypeId.HasValue ?
+                new ObjectParameter("UserTypeId", userTypeId) :
+                new ObjectParameter("UserTypeId", typeof(int));
+    
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DF_UpdateUser1", userIdParameter, userNameParameter, passwordParameter, firstNameParameter, lastNameParameter, genderParameter, dOBParameter, emailAddressParameter, addressParameter, cityParameter, stateParameter, countryParameter, profilePicParameter, zipParameter, aboutParameter, userTypeIdParameter, modifiedByParameter);
+        }
     }
 }

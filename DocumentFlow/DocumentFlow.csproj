@@ -1450,6 +1450,7 @@
     <Content Include="Views\Administrative\EditUserType.cshtml" />
     <Content Include="Views\Personal\UserHomePage.cshtml" />
     <Content Include="Views\Personal\SAmpleDesign.cshtml" />
+    <Content Include="Views\Administrative\EditUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

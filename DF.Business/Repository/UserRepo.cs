@@ -150,7 +150,7 @@ namespace DF.Business.Repository
             bool inserted = false;
             try
             {
-                dfEntities.DF_UpdateUser(Convert.ToInt32(user.Id), user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB, user.EmailAddress, user.Address, user.City, user.State,user.State, user.Zip, user.About,1,Convert.ToInt32( user.Id));
+                dfEntities.DF_UpdateUser1(Convert.ToInt32(user.Id), user.UserName, user.Password, user.FirstName, user.LastName, user.Gender, user.DOB, user.EmailAddress, user.Address, user.City, user.State,user.Country,user.ProfilePic, user.Zip, user.About, 1, Convert.ToInt32(user.Id));
                 inserted = true;
             }
             catch (Exception)

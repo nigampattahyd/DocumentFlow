@@ -212,7 +212,7 @@
                     </div>
                    
                     <div class="tab-pane" id="settings">
-                        @using (Html.BeginForm("UpdateUser", "Personal", FormMethod.Post))
+                        @using (Html.BeginForm("UpdateUser", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="form-horizontal">
                                 @Html.HiddenFor(model => model.Id)
@@ -285,7 +285,14 @@
                                 <div class="form-group">
                                     <label for="inputSkills" class="col-sm-2 control-label">Profile Picture</label>
                                     <div class="col-sm-4">
-                                        @Html.EditorFor(model => model.ProfilePic, new { htmlAttributes = new { @class = "form-control" } })
+                                        @{
+
+                                            var byteformat = Convert.ToBase64String(@Model.ProfilePic);
+                                            var userImage = String.Format("data:image/gif;base64,{0}", byteformat);
+                                        }
+                                        <img class="img-responsive" src=@userImage height="100" width="200" alt="User profile picture" />
+                                        <span><input type="file" /></span>
+                                        
                                     </div>
                                     <label for="inputEmail" class="col-sm-2 control-label">About</label>
                                     <div class="col-sm-4">
