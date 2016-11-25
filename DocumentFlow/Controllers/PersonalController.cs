@@ -74,7 +74,7 @@ namespace DocumentFlow.Controllers
         [HttpGet]
         public ActionResult SAmpleDesign()
         {
-            User loggedinUser = _userRepository.getUserDetailsById(10031);
+            User loggedinUser = _userRepository.getUserDetailsById(10034);
             return View(loggedinUser);
         }
         [HttpPost]
